@@ -359,6 +359,24 @@ overton_071.jsx → overton_072.jsx, strings ×3, fetch targets ×3, frame json.
 NEXT: model-level falsifiers (physics, scenario coverage, psyche coupling) —
 to be drafted and added to the register before the events they reference.
 
+[Jul 2] ISSUE #019 / RESOLVED — VERSION RACES THE CDN ON EVERY BUMP (α0.7.3)
+User report: 0.7.2 flashed, then downgraded to 0.7.1 — same symptom as #018,
+different cause. #018 was stale content in the repo; this time the repo was
+correct but GitHub's CDN edge still served the cached previous
+overton_frame.json (~10 min TTL). fetch cache:"no-store" bypasses the browser
+cache only, not the edge. Structural flaw: version string lived in two files,
+so every bump raced the CDN.
+Fix (structural, not another patch): version is now single-sourced from the
+JSX. The mount-effect merge strips `headline` and `status` from the fetched
+sidecar before merging — the sidecar can never override the version again.
+`headline` removed from overton_frame.json entirely; it keeps only live-state
+fields (position, velocity, note, next, updated). Bump checklist shrinks: the
+frame json no longer carries a version at all.
+Layman: the version number used to be written on two signs, and the old sign
+sometimes stayed up longer. Now there's one sign.
+overton_072.jsx → overton_073.jsx, strings + fetch targets updated, render
+test passes (α0.7.3 ×3).
+
 ═══════════════════════════════════════════════════════════════════════════════
 OPEN ISSUES
 ═══════════════════════════════════════════════════════════════════════════════

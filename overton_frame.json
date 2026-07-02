@@ -1,9 +1,7 @@
 {
   "title": "Overton Preview",
-  "headline": "Overton Project · α0.7.2",
   "position": 7.875,
   "velocity": 2.0,
-  "status": "provisional",
   "note": "Colorado node resolved. RAMP_FLOOR = 4 starting point.",
   "next": "Wisconsin · Aug 11",
   "updated": "2026-07-02"

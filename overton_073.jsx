@@ -15,12 +15,12 @@ const FACTIONS = {
 };
 
 const DEFAULT_FRAME = {
-  headline: "Overton Project · α0.7.2",
+  headline: "Overton Project · α0.7.3",
   status: "Proof of concept — WIP",
   position: 7.875,
   velocity: 2.0,
   next: "Wisconsin · Aug 11",
-  updated: "2026-07-01",
+  updated: "2026-07-02",
   note: "Colorado node resolved. RAMP_FLOOR = 4 starting point.",
 };
 
@@ -835,7 +835,11 @@ export default function Overton() {
       })
       .then((data) => {
         if (!active) return;
-        const merged = { ...DEFAULT_FRAME, ...data };
+        // Version is single-sourced from this file (DEFAULT_FRAME.headline).
+        // The sidecar must never override it — a stale CDN copy of the json
+        // was downgrading the displayed version on every bump (Issue #019).
+        const { headline: _ignored, status: _alsoIgnored, ...live } = data;
+        const merged = { ...DEFAULT_FRAME, ...live };
         setFrameData(merged);
         setTicker((prev) => {
           const base = `Model loaded — ${merged.updated || DEFAULT_FRAME.updated}. ${merged.note || DEFAULT_FRAME.note} Scale: −20 to +20.`;
@@ -933,7 +937,7 @@ export default function Overton() {
           <tr><th>β node</th><td>Michigan Senate (Abdul/Bowman)</td></tr>
           <tr><th>Methodology</th><td>Human-verified resolutions only</td></tr>
           <tr><th>Betting markets</th><td style={{color:C.rp, fontWeight:600}}>Excluded</td></tr>
-          <tr><th>Version</th><td>α0.7.2</td></tr>
+          <tr><th>Version</th><td>α0.7.3</td></tr>
         </tbody>
       </table>
 
@@ -1138,7 +1142,7 @@ export default function Overton() {
       )}
 
       <div className="ft">
-        Overton Project · α0.7.2 · Proof of concept, work in progress · July 2, 2026 · Scale −20 to +20 · Betting markets excluded · Errors logged publicly · The 2026 election is an instrument, not the subject · <a href="https://act.dsausa.org/donate/ibd_campaign">See how</a>
+        Overton Project · α0.7.3 · Proof of concept, work in progress · July 2, 2026 · Scale −20 to +20 · Betting markets excluded · Errors logged publicly · The 2026 election is an instrument, not the subject · <a href="https://act.dsausa.org/donate/ibd_campaign">See how</a>
       </div>
 
     </div></div>

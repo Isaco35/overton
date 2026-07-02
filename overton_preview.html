@@ -23,7 +23,7 @@
       async function loadPreview() {
         try {
           const params = new URLSearchParams(window.location.search);
-          const fileName = params.get('file') || 'overton_072.jsx';
+          const fileName = params.get('file') || 'overton_073.jsx';
           const source = await fetch('./' + fileName).then((r) => {
             if (!r.ok) throw new Error('Could not load ' + fileName + ' from ' + window.location.pathname);
             return r.text();
