@@ -312,6 +312,24 @@ preserved); all internal version strings α0.7.0 → α0.7.1 (header, infobox,
 footer); footer date → July 2, 2026; fetch targets updated in index.html,
 overton_preview.html, overton_mobile.html.
 
+[Jul 2] ISSUE #018 / RESOLVED — VERSION STATE DUPLICATED IN overton_frame.json
+User report: live page flashed α0.7.1 for one frame, then showed α0.7.0.
+Survived hard refresh AND incognito — so not a cache problem.
+Advanced: the app renders from a static DEFAULT_FRAME (bumped to 0.7.1), then
+a mount effect fetches ./overton_frame.json with cache:"no-store" and merges it
+over the defaults. That file still carried headline "α0.7.0" — so every load
+rendered new, then downgraded itself to old. The version string lives in TWO
+places; the Jul 2 bump (sed over *.jsx + fetch targets in *.html) never touched
+the .json.
+Layman: the page loads correctly, then reads a little sidecar file that still
+had the old version stamp, and trusts the file over itself.
+Fix: overton_frame.json headline → α0.7.1, updated → 2026-07-02.
+Secondary finding: the render-test harness uses server-side rendering, which
+never runs mount effects — so this class of bug (post-mount state overwrite)
+is invisible to it. Logged as a standing blind spot.
+Rule amendment (version bump checklist): version strings live in overton_NNN.jsx
+(×3), fetch targets in index/preview/mobile html, AND overton_frame.json.
+
 ═══════════════════════════════════════════════════════════════════════════════
 OPEN ISSUES
 ═══════════════════════════════════════════════════════════════════════════════
