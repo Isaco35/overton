@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 U.S. elections — the people's Overton window, a calibration model</title>
+<style>
+  :root{--ds:#0a2f7a;--d:#3b6dd6;--r:#e0454b;--rp:#9c1c20;--line:#a2a9b1;--box:#f8f9fa;--link:#3366cc;}
+  *{box-sizing:border-box}
+  body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.55;color:#202122;margin:0;background:#fff}
+  .wrap{max-width:920px;margin:0 auto;padding:14px 16px 80px}
+  h1{font-family:Georgia,serif;font-weight:normal;font-size:1.85em;border-bottom:3px solid #1a1a1a;padding-bottom:4px;margin:.2em 0 .1em}
+  h2{font-family:Georgia,serif;font-weight:normal;font-size:1.45em;border-bottom:1px solid var(--line);padding-bottom:3px;margin:1.4em 0 .5em}
+  h3{font-family:Georgia,serif;font-weight:normal;font-size:1.16em;margin:1.1em 0 .3em}
+  a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+  p{margin:.5em 0}.lead{font-size:.97em}
+  .modes{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;align-items:center}
+  .mtag{font-size:.74em;font-weight:bold;padding:3px 9px;border-radius:3px;color:#fff}
+  .m-fact{background:#2e6b3a}.m-think{background:#7a5cb0}.m-wrong{background:#b8860b}.m-news{background:#333}
+  .block{border-left:5px solid #ccc;padding:6px 12px;margin:8px 0;font-size:.9em;background:#fafafa}
+  .block.fact{border-color:#2e6b3a;background:#f1f7f2}
+  .block.think{border-color:#7a5cb0;background:#f6f3fb}
+  .block.wrong{border-color:#b8860b;background:#fbf8ef}
+  .block.news{border-color:#333;background:#f3f3f3;font-family:Georgia,serif;font-style:italic}
+  .block .lab{font-size:.7em;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:2px;font-style:normal;font-family:'Helvetica Neue',sans-serif}
+  .fact .lab{color:#2e6b3a}.think .lab{color:#7a5cb0}.wrong .lab{color:#b8860b}.news .lab{color:#333}
+  .toc{border:1px solid var(--line);background:var(--box);display:inline-block;padding:8px 16px 8px 8px;margin:8px 0;font-size:.9em}
+  .toc b{display:block;font-size:.85em;color:#54595d;margin-bottom:3px}.toc ol{margin:0;padding-left:1.6em}.toc li{margin:1px 0}
+  .hatnote{font-style:italic;color:#54595d;border-bottom:1px dotted #ccc;padding-bottom:6px;margin-bottom:10px;font-size:.92em}
+  .infobox{float:right;width:312px;border:1px solid var(--line);background:var(--box);font-size:.85em;margin:0 0 14px 16px}
+  .infobox .ib-title{background:#1a1a1a;color:#fff;text-align:center;font-weight:bold;padding:6px;font-size:1.05em}
+  .infobox table{width:100%;border-collapse:collapse}
+  .infobox th{text-align:left;vertical-align:top;padding:5px 7px;width:46%;border-top:1px solid #e2e2e2}
+  .infobox td{padding:5px 7px;border-top:1px solid #e2e2e2}
+  .ib-sub{background:#eaecf0;font-weight:bold;text-align:center;padding:4px}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 16px;border:1px solid var(--line);background:var(--box);padding:9px 12px;margin:10px 0;font-size:.86em}
+  .legend .it{display:flex;align-items:center;gap:6px}.sw{width:15px;height:15px;border:1px solid #888;display:inline-block;flex:none}
+  .mono{font-family:'Courier New',monospace;font-weight:bold}
+  .scn{border:1px solid var(--line);margin:16px 0;background:#fff}
+  .scn .hd{padding:8px 12px;color:#fff;font-weight:bold;font-size:1.1em;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
+  .scn .bd{padding:10px 14px}
+  .hd.s1{background:#06204f}.hd.sD{background:#123e8c}.hd.s2{background:#5a5f66}.hd.s3{background:#7a2a2a}.hd.sW{background:#6b4e16}
+  .tag{font-size:.7em;background:rgba(255,255,255,.22);padding:2px 7px;border-radius:10px;font-weight:normal}
+  .hemi{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center;margin:6px 0}
+  .hemi figure{margin:0;text-align:center}.hemi figcaption{font-size:.8em;color:#54595d;margin-top:2px}
+  .bar{display:flex;height:26px;width:100%;border:1px solid #888;overflow:hidden;font-size:.72em}
+  .bar span{display:flex;align-items:center;justify-content:center;color:#fff;white-space:nowrap;overflow:hidden}
+  .barlbl{display:flex;justify-content:space-between;font-size:.74em;color:#444;margin-top:2px}
+  .owin{display:flex;height:30px;border:1px solid #555;margin:6px 0;font-size:.7em;font-weight:bold}
+  .owin span{display:flex;align-items:center;justify-content:center;color:#fff}
+  table.wt{border-collapse:collapse;width:100%;margin:10px 0;font-size:.85em;background:#fff}
+  table.wt caption{font-weight:bold;text-align:left;padding:4px 0;font-size:1em}
+  table.wt th,table.wt td{border:1px solid #c8ccd1;padding:5px 7px;text-align:left;vertical-align:top}
+  table.wt th{background:#eaecf0}table.wt tr:nth-child(even) td{background:#f8f9fa}
+  .chip{display:inline-block;font-family:'Courier New',monospace;font-weight:bold;padding:1px 6px;border-radius:3px;color:#fff;font-size:.92em}
+  .c-ds{background:var(--ds)}.c-d{background:var(--d)}.c-r{background:var(--r)}.c-rp{background:var(--rp)}.c-q{background:#000}.c-bang{background:#b8860b}
+  .note{background:#fbfbf3;border-left:4px solid #d4c84a;padding:8px 12px;margin:10px 0;font-size:.88em}
+  .warn{background:#fdf3f3;border-left:4px solid var(--r);padding:8px 12px;margin:10px 0;font-size:.88em}
+  .src{font-size:.82em;color:#54595d}
+  ul.tight{margin:.4em 0;padding-left:1.3em}ul.tight li{margin:.25em 0}.small{font-size:.82em;color:#54595d}
+  hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+  .tnode{border:1px solid var(--line);border-left:6px solid var(--ds);padding:8px 12px;margin:8px 0;background:#fafbfd}
+  .tnode .dt{font-weight:bold;font-family:'Courier New',monospace;font-size:.92em}
+  .tnode .win{display:flex;gap:0;margin-top:6px;font-size:.72em;border:1px solid #999}
+  .tnode .win span{flex:1;padding:3px 6px;color:#fff;text-align:center;font-weight:bold}
+  .pipe{display:flex;align-items:center;gap:8px;margin:10px 0;flex-wrap:wrap;font-size:.88em}
+  .pbox{border:1px solid #888;padding:6px 12px;border-radius:4px;text-align:center;font-weight:bold;color:#fff}
+  .arrow{font-size:1.4em;color:#7a2a2a;font-weight:bold}
+  .gauge{display:flex;height:34px;border:1px solid #777;overflow:hidden;font-size:.74em;font-weight:bold;margin:6px 0}.gauge span{display:flex;align-items:center;justify-content:center;color:#fff}
+  /* psyche grid */
+  .psyche{margin:8px 0}
+  .psyche .ph{font-size:.68em;font-weight:bold;color:#54595d;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+  .psyche .pg{display:flex;flex-wrap:wrap;gap:3px}
+  .px{font-size:.69em;font-weight:bold;padding:3px 7px;border-radius:3px;color:#fff;white-space:nowrap}
+  .px-angry-up{background:#c0392b}.px-angry-dn{background:#16a085}
+  .px-guided-up{background:#8e44ad}.px-guided-dn{background:#7f8c8d}
+  .px-d{background:#3b6dd6}.px-rp{background:#9c1c20}
+  .px-ds{background:#0a2f7a}.px-r{background:#e0454b}
+  .px-neutral{background:#888}
+  .px-cond{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin:6px 0;font-size:.69em}
+  .px-cond .hdr{font-weight:bold;padding:2px 5px;border-radius:2px;color:#fff;text-align:center}
+  .px-cond .row{display:contents}
+  .px-cond .cell{padding:2px 5px;background:#f0f0f0;color:#222;border-radius:2px;font-size:.95em}
+  .psep{border-top:1px dashed #ccc;margin:6px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>2026 U.S. elections: a model of the people's Overton window</h1>
+<p class="hatnote">Built 27 June 2026, after the 23 June NYC primaries and before Colorado (30 Jun), the August primaries, and the 3 November general. The seat scenarios are the instrument; the target is the <b>Overton window</b> — what has become sayable and electable. The dated decision tree is the calibration: each node is a real event that moves the window left, holds it, or moves it right. Sourcing is 100% AI-free and uses no betting markets.</p>
+
+<div class="modes">
+  <span class="mtag m-fact">FACT</span><span class="small">sourced &amp; verified</span>
+  <span class="mtag m-think">MY READ</span><span class="small">active interpretation</span>
+  <span class="mtag m-wrong">CORRECTED</span><span class="small">a prior draft was wrong</span>
+  <span class="mtag m-news">DISPATCH</span><span class="small">newspaper voice, for recent/scenario events only</span>
+</div>
+
+<div class="toc"><b>Contents</b>
+  <ol>
+    <li>What the model measures: the Overton window</li>
+    <li>The labels · the R/RP correction ×2</li>
+    <li>The two axes + the shock floor</li>
+    <li>Scenario A — total {DS} victory</li>
+    <li>Scenario D — considerable {DS} win + House flip</li>
+    <li>Scenario B — modest / 50-50</li>
+    <li>Scenario C — "just a NYC thing"</li>
+    <li>Scenario W — wildcard / shock layer + the feedback loop</li>
+    <li>The {R}→{RP} culling, and the tide that can turn</li>
+    <li>Redistricting · how {DS} moves seats</li>
+    <li>THE PEOPLE'S DECISION TREE (filled with facts)</li>
+    <li>Margins of possibility</li>
+    <li>The median voter · the inattentive view</li>
+    <li>Bias audit · what this is NOT</li>
+  </ol>
+</div>
+
+<aside class="infobox">
+  <div class="ib-title">The real math · 27 Jun 2026</div>
+  <table>
+    <tr><th>House now</th><td><span class="chip c-rp">RP</span>-dominant 218 R · <span class="chip c-d">D</span> 214 · Ind 1 · Vac 3</td></tr>
+    <tr><th>Dem House flip #</th><td><b>net +3</b></td></tr>
+    <tr><th>Senate now</th><td>53 R · <span class="chip c-d">D</span> 47</td></tr>
+    <tr><th>Dem Senate flip #</th><td><b>net +4</b> (50–50 → VP Vance → R)</td></tr>
+    <tr><td class="ib-sub" colspan="2">Environment (27 Jun)</td></tr>
+    <tr><th>Generic ballot</th><td>D +7.2 (poll average)</td></tr>
+    <tr><th>Trump net approval</th><td><b>−25%</b>, Economist-tracker low (Iran war + ~$4 gas)</td></tr>
+    <tr><th>GOP base erosion</th><td>Iran handling 83%→68%; 4 House R's broke on war powers</td></tr>
+    <tr><td class="ib-sub" colspan="2">The red split (corrected ×2)</td></tr>
+    <tr><th><span class="chip c-r">{R}</span> breaks w/ Trump</th><td>~10 in primaries — a <b>tide that can turn</b> in generals (§9)</td></tr>
+    <tr><th><span class="chip c-rp">{RP}</span> submits</th><td>the rest — the party <em>is</em> Trump's, for now</td></tr>
+    <tr><td class="ib-sub" colspan="2">{DS} House field</td></tr>
+    <tr><th>Realistic 2026 ceiling</th><td><b>~12 seats</b> (field-capped)</td></tr>
+  </table>
+</aside>
+
+<!-- 1 OVERTON FRAMING -->
+<h2>1 · What the model measures: the Overton window</h2>
+<div class="block think"><span class="lab">My read</span>The seat counts are a proxy. What this model is really tracking is the <b>Overton window</b> — the moving boundary of what is politically sayable and electable. Axis 2 (the <span class="mono">{DS}</span>-vs-<span class="mono">{D}</span> fight) <em>is</em> an Overton question: has "socialism" crossed from unsayable to electable? The window does not move because people are persuaded. It moves because the boundary of what gets <em>punished</em> at the ballot shifts. Every time an openly socialist candidate wins instead of loses, the warning "this will cost you" loses force — and the window slides. The general election is the test of how far it has slid. The decision tree (§11) is how we calibrate it: each dated, sourced event tells us which way the window moved.</div>
+<div class="owin">
+  <span style="background:#7a2a2a;width:22%">window right: "socialism loses"</span>
+  <span style="background:#5a5f66;width:38%">window held: contested, NYC-bound</span>
+  <span style="background:#123e8c;width:25%">window left a tick (where it sits 27 Jun)</span>
+  <span style="background:#06204f;width:15%">window left a step: socialism normalised</span>
+</div>
+<div class="block fact"><span class="lab">Fact</span>The window has already moved a measurable tick: a self-described socialist holds the NYC mayoralty and froze rents on ~1M apartments (RGB vote, 25 Jun); three more <span class="mono">{DS}</span>/aligned candidates won safe-seat House primaries (23 Jun). Whether that tick becomes a step is what November decides.</div>
+
+<!-- 2 LABELS -->
+<h2>2 · The labels · the R/RP correction ×2</h2>
+<div class="block wrong"><span class="lab">Corrected</span>Two fixes from earlier drafts. (1) The red split is <b>submission to Trump</b>, not ideology: <span class="mono">{R}</span> breaks with Trump (Massie-type); <span class="mono">{RP}</span> submits. Almost the whole conference is <span class="mono">{RP}</span>. (2) <span class="mono">{R}</span> is <em>not</em> monotonically shrinking — it shrinks in primaries and can <em>re-expand in generals</em> when Trump is weak (§9).</div>
+<div class="block fact"><span class="lab">Fact</span>Massie, the definitional <span class="mono">{R}</span>, lost his May 2026 primary to Trump-recruited Ed Gallrein in the most expensive U.S. House primary on record ($32M+; AIPAC $15.8M+ branding him "the most anti-Israel Republican in the House"). Trump also ousted Sen. Cassidy. Yet days later, four House Republicans broke with Trump on the Iran war-powers vote — <span class="mono">{R}</span> behaviour reviving as Trump weakens.</div>
+<div class="legend">
+  <span class="it"><span class="sw" style="background:var(--ds)"></span><span class="mono">{DS}</span> progressive-movement cadre (loyalty + Israel litmus; offensive-only embargo still qualifies, e.g. Lander via the moderate-admission path)</span>
+  <span class="it"><span class="sw" style="background:var(--d)"></span><span class="mono">{D}</span> establishment Democrat</span>
+  <span class="it"><span class="sw" style="background:var(--r)"></span><span class="mono">{R}</span> Republican who breaks w/ Trump</span>
+  <span class="it"><span class="sw" style="background:var(--rp)"></span><span class="mono">{RP}</span> Trump loyalist</span>
+  <span class="it"><span class="chip c-q">?</span> winner/contest unknown</span>
+  <span class="it"><span class="chip c-bang">!</span> alignment unknown</span>
+</div>
+
+<!-- 3 AXES -->
+<h2>3 · The two axes + the shock floor</h2>
+<p class="lead"><b>Axis 1 — control</b> (<span class="mono">{D}</span> vs <span class="mono">{R}/{RP}</span>): decided in swing seats <span class="mono">{DS}</span> doesn't contest. <b>Axis 2 — the Democratic civil war</b> (<span class="mono">{DS}</span> vs <span class="mono">{D}</span>): safe-blue primaries; the live Overton question. <b>Layer 3 — the shock floor:</b> at +3 House / one-seat Senate, deaths, scandals, court rulings, and redistricting move control independently of either axis.</p>
+
+<!-- 4 A -->
+<h2>4 · Scenario A — total <span class="mono">{DS}</span> victory</h2>
+<div class="scn"><div class="hd s1"><span>A — total <span class="mono">{DS}</span> victory</span><span class="tag">low prob. for 2026</span></div><div class="bd">
+  <div class="hemi"><figure><svg width="300" height="162" viewBox="0 0 300 162"><g id="hA"></g></svg><figcaption>435 · majority 218</figcaption></figure>
+  <div style="min-width:170px"><div class="bar"><span style="background:var(--ds);width:13%">58</span><span style="background:var(--d);width:39%">170</span><span style="background:var(--r);width:2.3%">10</span><span style="background:var(--rp);width:45%">197</span></div>
+  <div class="barlbl"><span><span class="mono">{DS}+{D}</span>=228</span><span><span class="mono">{R}</span>10 · <span class="mono">{RP}</span>197</span></div>
+  <div class="small" style="margin-top:4px"><b>Overton:</b> a full step left. Socialism normalised nationally.</div></div></div>
+  <div class="block think"><span class="lab">My read</span>Both axes break left and the wing scales past its field. There aren't ~58 competitive <span class="mono">{DS}</span> challengers in 2026, so this is a multi-cycle endpoint, shown for the ceiling. Even here the wing is ~13% of the House — a dominant faction, never a majority of government.</div>
+  <div class="block news"><span class="lab">Dispatch (scenario-conditional)</span>"The word that cost careers a decade ago is now a credential. In a single cycle the Democratic Party did not merely tilt left; it changed what it is permitted to want — and the establishment that once set those limits found itself asking the insurgents for terms."</div>
+</div></div>
+
+<!-- 5 D -->
+<h2>5 · Scenario D — considerable <span class="mono">{DS}</span> win + House flip</h2>
+<div class="scn"><div class="hd sD"><span>D — considerable <span class="mono">{DS}</span> win + House flip</span><span class="tag">realistic</span></div><div class="bd">
+  <h3>House — Democrats flip</h3>
+  <div class="hemi"><figure><svg width="300" height="162" viewBox="0 0 300 162"><g id="hD"></g></svg><figcaption>435 · majority 218</figcaption></figure>
+  <div style="min-width:185px"><div class="bar"><span style="background:var(--ds);width:2.8%">12</span><span style="background:var(--d);width:48.5%">211</span><span style="background:var(--r);width:2.3%">10</span><span style="background:var(--rp);width:46.4%">202</span></div>
+  <div class="barlbl"><span><span class="mono">{DS}+{D}</span>=223 (maj.)</span><span><span class="mono">{R}</span>10 · <span class="mono">{RP}</span>202</span></div>
+  <div class="small" style="margin-top:4px"><b>Overton:</b> a clear tick left, then entrenchment. Senate stays R.</div></div></div>
+  <div class="block fact"><span class="lab">Fact</span>Every <span class="mono">{DS}</span> 2026 win is a safe-blue seat already Democratic; the wing's named candidates flip zero Republican-held seats. House flips via <span class="mono">{D}</span> moderates in swing seats. Dem flip number is just +3, in a D+7.2 environment with Trump at −25%.</div>
+  <div class="block think"><span class="lab">My read</span><b>Can {DS} flip a chamber? Directly, no — leverage, yes.</b> Twelve disciplined members in a +5 majority are decisive; the <span class="mono">{RP}</span> Freedom Caucus bent the GOP without a majority either. This is the <em>dangerous</em> scenario: A triggers an immune response, C ends the threat, but D is survivable-looking, so it <em>normalises</em>. The faction entrenches precisely because it isn't alarming enough to provoke a unified counter. Precedent: 2010 Tea Party → today's <span class="mono">{RP}</span>.</div>
+  <div class="block news"><span class="lab">Dispatch (scenario-conditional)</span>"They did not win the House. They won the hinge of it. A bloc small enough to fit in a single hearing room now decides whether the Speaker keeps the gavel — and the affordability agenda that carried New York becomes the price of Democratic unity."</div>
+</div></div>
+
+<!-- 6 B -->
+<h2>6 · Scenario B — modest / 50-50</h2>
+<div class="scn"><div class="hd s2"><span>B — modest / near-50-50</span><span class="tag">most probable</span></div><div class="bd">
+  <div class="hemi"><figure><svg width="300" height="162" viewBox="0 0 300 162"><g id="hB"></g></svg><figcaption>435 · majority 218</figcaption></figure>
+  <div style="min-width:175px"><div class="bar"><span style="background:var(--ds);width:2%">8</span><span style="background:var(--d);width:47.5%">208</span><span style="background:var(--r);width:2.7%">12</span><span style="background:var(--rp);width:47.4%">207</span></div>
+  <div class="barlbl"><span><span class="mono">{DS}+{D}</span>=216 <span class="chip c-q">?</span></span><span><span class="mono">{R}</span>12 · <span class="mono">{RP}</span>207 <span class="chip c-q">?</span></span></div>
+  <div class="small" style="margin-top:4px"><b>Overton:</b> holds at one tick left. Contested, not settled.</div></div></div>
+  <div class="block think"><span class="lab">My read</span>Axes split. <span class="mono">{DS}</span> banks NYC, stalls outside the core. House control a coin-flip in swing races; Senate stays R. The window neither advances nor reverts — the most likely outcome, and the most ambiguous.</div>
+  <div class="block news"><span class="lab">Dispatch (scenario-conditional)</span>"The night settled nothing. The socialists held what they had and reached no further; the establishment bled but did not break. Both sides claimed the future, which is how you know neither has it yet."</div>
+</div></div>
+
+<!-- 7 C -->
+<h2>7 · Scenario C — "just a NYC thing"</h2>
+<div class="scn"><div class="hd s3"><span>C — "just a NYC thing"</span><span class="tag">live possibility</span></div><div class="bd">
+  <div class="hemi"><figure><svg width="300" height="162" viewBox="0 0 300 162"><g id="hC"></g></svg><figcaption>435 · majority 218</figcaption></figure>
+  <div style="min-width:175px"><div class="bar"><span style="background:var(--ds);width:1.6%">7</span><span style="background:var(--d);width:44%">191</span><span style="background:var(--r);width:2.7%">12</span><span style="background:var(--rp);width:51.7%">225</span></div>
+  <div class="barlbl"><span><span class="mono">{DS}+{D}</span>=198</span><span><span class="mono">{R}</span>12 · <span class="mono">{RP}</span>225</span></div>
+  <div class="small" style="margin-top:4px"><b>Overton:</b> reverts. Window snaps back to explicit Axis 1.</div></div></div>
+  <div class="block think"><span class="lab">My read</span>NYC banks, export fails (Kiros/Bush/McKinney/Larkin fall), redistricting helps <span class="mono">{RP}</span> hold and expand. The wing is revealed as metropolitan and non-transferable; the window closes on the experiment and politics reverts to red-vs-blue.</div>
+  <div class="block news"><span class="lab">Dispatch (scenario-conditional)</span>"It turned out to be a city, not a country. The energy that toppled a congressman in Brooklyn died at the city line, and the word that felt inevitable in June felt local again by November."</div>
+</div></div>
+
+<!-- 8 W -->
+<h2>8 · Scenario W — the shock layer + the feedback loop</h2>
+<div class="scn"><div class="hd sW"><span>W — the shock floor</span><span class="tag">always live · unmodellable</span></div><div class="bd">
+  <div class="block think"><span class="lab">My read</span>At +3 House / one-seat Senate, one shock anywhere flips control — and the shock is the thing no forecast carries. "Anything can happen" is not a hedge here; it is the most accurate single statement about the cycle.</div>
+  <table class="wt"><caption>Shock channels — real 2026 examples</caption>
+  <tr><th>Channel</th><th>On the board</th><th>Effect</th></tr>
+  <tr><td>Trump culls a <span class="mono">{R}</span></td><td>Massie, Cassidy primaried out</td><td><span class="mono">{R}</span>→<span class="mono">{RP}</span> or gone</td></tr>
+  <tr><td>Weak Trump revives <span class="mono">{R}</span></td><td>4 House R's broke on war powers; Trump at −25%</td><td><span class="mono">{R}</span> re-expands in generals (§9)</td></tr>
+  <tr><td>Court ruling</td><td>SCOTUS gutted VRA §2; removed Milligan injunction 2 Jun → AL Black seat killed</td><td>creates/erases seats mid-cycle</td></tr>
+  <tr><td>Candidate implosion</td><td>Gonzales (TX-R) dropped post-scandal; Platner (ME) allegations</td><td>hands a "safe" seat away</td></tr>
+  <tr><td>Economic shock</td><td>Iran war, ~$4 gas (from ~$3); any further spike/cool</td><td>swings the whole generic ballot</td></tr>
+  </table>
+  <div class="block fact"><span class="lab">Fact — populist convergence</span>The affordability lane is now contested from the right. At the White House, Trump said of Mamdani's economic plans, "Some of his ideas are really the same ideas that I have," and pitched affordability as his own ratings fell over food and gas costs. An <span class="mono">{RP}</span> or <span class="mono">{R}</span> can run Mamdani-style — anti-system, cost-of-living — blurring Axis 2 from the opposite end. This is unmodellable and belongs here, not in the scenarios.</div>
+  <div class="block think"><span class="lab">My read — the feedback loop</span>A <span class="mono">{DS}</span> win is not only an outcome; it is itself a <em>shock that can transfer anger</em>. Generals are soon, and how much anti-incumbent rage transfers leftward depends on how much shock there is — and a socialist victory can <em>be</em> that shock, helping the next one win. The window moving left makes it easier to move left again. This self-reinforcing loop is the mechanism by which "a NYC thing" could stop being one, and it is exactly what the establishment fails to price when it treats Scenario D as survivable.</div>
+</div></div>
+
+<!-- 9 CULLING -->
+<h2>9 · The <span class="mono">{R}→{RP}</span> culling, and the tide that can turn</h2>
+<div class="pipe">
+  <span class="pbox" style="background:var(--r)">{R} breaks</span><span class="arrow">→</span>
+  <span class="pbox" style="background:#b8860b">Trump recruits a challenger + floods money</span><span class="arrow">→</span>
+  <span class="pbox" style="background:var(--rp)">{R} primaried out → others submit</span>
+</div>
+<div class="block wrong"><span class="lab">Corrected — the tide turns</span>I earlier called <span class="mono">{R}</span> "monotonically shrinking." Wrong. The culling runs in <em>primaries</em>, where the Trump-loyal base votes. But the <em>general</em> electorate is furious about Iran and ~$4 gas, with Trump at −25%. So the two environments pull opposite directions: <b>primary logic</b> = submit or be culled (manufactures <span class="mono">{RP}</span>); <b>general logic</b> = distance from Trump or drown (rewards <span class="mono">{R}</span> behaviour). We may see <em>more</em> <span class="mono">{R}</span> in November — not from revived principle, but because a weak Trump flips distancing from suicide into survival. The four war-powers defectors are the leading edge.</div>
+<table class="wt"><caption>The two insurgencies, offset in time</caption>
+  <tr><th></th><th>Democratic side</th><th>Republican side</th></tr>
+  <tr><td><b>Insurgent faction</b></td><td><span class="chip c-ds">{DS}</span> — socialist wing</td><td><span class="chip c-rp">{RP}</span> — Trump movement</td></tr>
+  <tr><td><b>Stage</b></td><td>Beginning — rising, contested</td><td>End — victorious, but now <em>weakening</em> (−25%)</td></tr>
+  <tr><td><b>Establishment</b></td><td><span class="chip c-d">{D}</span> — still the larger bloc</td><td><span class="chip c-r">{R}</span> — culled in primaries, reviving in generals</td></tr>
+  <tr><td><b>2026 casualty</b></td><td>incumbents fall to <span class="mono">{DS}</span> (Espaillat, Goldman)</td><td><span class="mono">{R}</span> culled by <span class="mono">{RP}</span> (Massie, Cassidy)</td></tr>
+</table>
+<div class="block think"><span class="lab">My read</span><span class="mono">{RP}</span> is what <span class="mono">{DS}</span> could become if it wins and turns on its own moderates — the cautionary endpoint of a captured-party insurgency that no longer gives restraint. But Trump at −25% shows the other end of the arc too: a victorious insurgency that overreaches (the Iran war) starts losing its own base. Both warnings sit in the same diagram.</div>
+
+<!-- 10 REDISTRICTING + MECHANISMS -->
+<h2>10 · Redistricting · how <span class="mono">{DS}</span> moves seats</h2>
+<div class="block fact"><span class="lab">Fact</span>Mid-decade redistricting tilts toward <span class="mono">{R}</span> before any vote: GOP map gains projected up to +14 (TX, FL, MO, NC, OH, TN); Democratic up to +6 (CA, UT). California's counter-map largely cancels Texas; Virginia's Democratic map was struck down. Democrats need their +3 on a map already moved against them.</div>
+<table class="wt"><caption>How <span class="mono">{DS}</span> actually moves seats — 4 mechanisms</caption>
+  <tr><th>#</th><th>Mechanism</th><th>Net</th></tr>
+  <tr><td>1</td><td><span class="mono">{DS}</span> candidate wins (Valdez, Kiros<span class="chip c-q">?</span>)</td><td>+1 <span class="chip c-ds">{DS}</span>, −1 <span class="chip c-d">{D}</span> (intra-blue)</td></tr>
+  <tr><td>2</td><td><span class="mono">{DS}</span> machine backs a non-<span class="mono">{DS}</span> winner (lends turnout/$)</td><td>flips a seat <span class="mono">{D}</span> — reach &gt; roster</td></tr>
+  <tr><td>3</td><td>turnout spillover into adjacent swing seat</td><td>marginal + for <span class="mono">{D}</span> control</td></tr>
+  <tr><td>4</td><td>brand drag (lets <span class="mono">{RP}</span> nationalise "socialism")</td><td>marginal − for <span class="mono">{D}</span> control</td></tr>
+</table>
+<div class="block wrong"><span class="lab">Corrected</span>Mechanism 2 is why "<span class="mono">{DS}</span> can't flip a chamber" was too strong. The machine is a resource that can be lent, so the wing can help flip a seat without putting a socialist in it. Correct claim: "<span class="mono">{DS}</span> can't flip a chamber <em>by itself, with its own candidates</em>."</div>
+
+<!-- 11 DECISION TREE -->
+<h2>11 · The people's decision tree — filled with facts</h2>
+<div class="block think"><span class="lab">My read</span>Two parts: <b>past knowledge nodes</b> (already resolved — these are the events whose outcomes have already shaped the current diagnosis) and <b>forward nodes</b> (pending, with conditional psyche effects per branch). Each node carries a psyche panel showing the event's effect on the six dimensions the model tracks. All facts are AI-free and use no betting markets.</div>
+
+<div class="legend" style="margin:8px 0;font-size:.8em">
+  <span class="it"><span class="px px-angry-up">ANGRY ▲</span> more anger (general)</span>
+  <span class="it"><span class="px px-angry-dn">ANGRY ▼</span> less anger</span>
+  <span class="it"><span class="px px-guided-up">GUIDED ▲</span> more ideological direction</span>
+  <span class="it"><span class="px px-guided-dn">GUIDED ▼</span> less direction / more confusion</span>
+  <span class="it"><span class="px px-d">D·est</span> {D} establishment popularity</span>
+  <span class="it"><span class="px px-rp">RP·est</span> {RP} establishment popularity</span>
+  <span class="it"><span class="px px-ds">DS·ins</span> {DS} insurgent popularity</span>
+  <span class="it"><span class="px px-r">R·ins</span> {R} insurgent popularity</span>
+  <span class="it"><span class="small">gen = general public · party = within that faction's base · ▲▲ = strong · ▼▼ = strong</span></span>
+</div>
+
+<h3 style="border-bottom:2px solid var(--ds);padding-bottom:3px;margin-top:1.2em">Part A — past knowledge nodes (resolved; shape the current diagnosis)</h3>
+
+<div class="tnode">
+  <span class="dt">● NOV 4, 2025 — Mamdani wins NYC general election.</span> <b>FACT:</b> Won 50.78%, highest NYC mayoral turnout since 1993. First Muslim, first South Asian mayor. Opened victory speech with a Eugene Debs quote; Trump had called him "a 100% Communist Lunatic." Became the first {DS} figure to hold a strong-mayor executive.
+  <div class="psyche"><span class="ph">Psyche effects (resolved)</span><div class="pg">
+    <span class="px px-angry-up">ANGRY ▲gen / ▼left</span>
+    <span class="px px-guided-up">GUIDED ▲▲ {DS}</span>
+    <span class="px px-d">D·est ▼gen ▼D-party</span>
+    <span class="px px-rp">RP·est ▲party (rallying enemy)</span>
+    <span class="px px-ds">DS·ins ▲▲gen ▲▲party</span>
+    <span class="px px-r">R·ins ~neutral</span>
+  </div></div>
+  <div class="block think" style="margin-top:6px"><span class="lab">My read</span>The executive capture is what makes this different from the Squad or Bernie. A socialist holding a $120B strong-mayor apparatus is a new Overton data point; the window moved a tick before any congressional race.</div>
+</div>
+
+<div class="tnode">
+  <span class="dt">● NOV–FEB 2025–26 — Trump–Mamdani White House meetings (×2).</span> <b>FACT:</b> First meeting Nov 2025: Trump called Mamdani "not a jihadist," said "some of his ideas are really the same ideas that I have," and championed affordability while his own ratings sank. Second meeting Feb 26, 2026: unannounced, confirmed only after it leaked; Trump's response to Mamdani's housing pitch was "very enthusiastic." WSWS called it a "Red-Brown coalition" and "collaboration with fascism."
+  <div class="psyche"><span class="ph">Psyche effects (resolved)</span><div class="pg">
+    <span class="px px-angry-up">ANGRY ▲ {DS}-left (WSWS fury)</span>
+    <span class="px px-guided-dn">GUIDED ▼gen (blurs ideological lines)</span>
+    <span class="px px-d">D·est ~neutral</span>
+    <span class="px px-rp">RP·est ▼party (Trump "loves socialism" jokes)</span>
+    <span class="px px-ds">DS·ins ▼ hard-left / ▲ pragmatist wing</span>
+    <span class="px px-r">R·ins ▲ (Trump deals with anyone)</span>
+  </div></div>
+  <div class="block think" style="margin-top:6px"><span class="lab">My read — {R}/{DS} convergence.</span> This is the live answer to "can {R} and {DS} team up?" They already met — twice — on the affordability axis. Massie and {DS} share anti-war, anti-AIPAC, anti-establishment DNA. The convergence isn't ideological brotherhood; it's a pragmatic overlap on the specific issues both insurgencies prioritise over establishment loyalty. In a razor-thin House, that overlap becomes procedurally consequential.</div>
+</div>
+
+<div class="tnode">
+  <span class="dt">● AUG 2025 — DSA national convention: "For a Fighting Anti-Zionist DSA" passed (56%).</span> <b>FACT:</b> First explicitly anti-Zionist resolution in DSA's history; codified the Israel litmus as binding endorsement conditions — genocide recognition, BDS support, opposition to any weapons transfer, al-Thawabit. Passed alongside a 2028 presidential-run resolution. AOC nationally unendorsed over Iron Dome + IHRA votes. Bowman precedent: Iron Dome = demotion.
+  <div class="psyche"><span class="ph">Psyche effects (resolved)</span><div class="pg">
+    <span class="px px-angry-up">ANGRY ▲ AIPAC/establishment</span>
+    <span class="px px-guided-up">GUIDED ▲▲ {DS}-party (hard litmus)</span>
+    <span class="px px-d">D·est ▼party (Israel donors alarmed)</span>
+    <span class="px px-rp">RP·est ▲party ("socialist-Hamas" attack pre-loaded)</span>
+    <span class="px px-ds">DS·ins ▲▲party / ▼ moderate-admission wing</span>
+    <span class="px px-r">R·ins ~neutral</span>
+  </div></div>
+</div>
+
+<div class="tnode">
+  <span class="dt">● MAY 2026 — Massie primaried out by Trump-recruited Ed Gallrein.</span> <b>FACT:</b> Most expensive U.S. House primary on record ($32M+); AIPAC and pro-Israel groups spent $15.8M+ branding Massie "the most anti-Israel Republican in the House." Trump called him "the worst congressman in the history of our country." Massie: "A lot of people have been intimidated into a monolithic position and even changing their positions on foreign policy and FISA." Sen. Cassidy also ousted.
+  <div class="psyche"><span class="ph">Psyche effects (resolved)</span><div class="pg">
+    <span class="px px-angry-up">ANGRY ▲ libertarian/anti-war right</span>
+    <span class="px px-guided-dn">GUIDED ▼ {R} (chilling effect)</span>
+    <span class="px px-d">D·est ~neutral</span>
+    <span class="px px-rp">RP·est ▲party (submission enforced) / ▼gen (authoritarian)</span>
+    <span class="px px-ds">DS·ins ▲gen (enemy of my enemy; same Israel litmus)</span>
+    <span class="px px-r">R·ins ▼▼party (chilling) / ▲gen (martyr)</span>
+  </div></div>
+  <div class="block think" style="margin-top:6px"><span class="lab">My read</span>The same AIPAC money that culled Massie funds challenges against {DS} candidates. The two insurgencies are being squeezed by the same financial apparatus from opposite ends of the spectrum — which is the structural basis for any {R}/{DS} tacit alignment, however uncomfortable both sides find it.</div>
+</div>
+
+<div class="tnode">
+  <span class="dt">● EARLY 2026 — The Iran war and Trump at −25%.</span> <b>FACT:</b> Gas rose from ~$3 to ~$4/gal. Economist/YouGov: Trump net approval −25%, lowest ever recorded. GOP approval of Iran handling fell 83%→68%. Economic optimism among Republicans fell 50%→29%. 61% of Americans — including 51% of Republicans — noticed gas price rises. Only ¼ of Americans say the U.S. won the war in Iran.
+  <div class="psyche"><span class="ph">Psyche effects (ongoing)</span><div class="pg">
+    <span class="px px-angry-up">ANGRY ▲▲gen</span>
+    <span class="px px-guided-dn">GUIDED ▼gen (rage without direction)</span>
+    <span class="px px-d">D·est ▲gen (beneficiary) / ▼D-party (still blamed for inflation era)</span>
+    <span class="px px-rp">RP·est ▼▼gen ▼party (base eroding)</span>
+    <span class="px px-ds">DS·ins ▲gen (affordability frame lands harder)</span>
+    <span class="px px-r">R·ins ▲▲gen (distancing from Trump looks rational)</span>
+  </div></div>
+</div>
+
+<div class="tnode">
+  <span class="dt">● JUN 2, 2026 — SCOTUS removes Milligan injunction; VRA §2 gutted.</span> <b>FACT:</b> Eliminated an Alabama majority-Black congressional seat mid-cycle; Virginia's Democratic map struck down by the state Supreme Court; Texas GOP map stayed by SCOTUS pending review. Net: the map pre-tilted toward {RP} before any vote, Democrats need +3 on ground already moved against them.
+  <div class="psyche"><span class="ph">Psyche effects (resolved)</span><div class="pg">
+    <span class="px px-angry-up">ANGRY ▲ Black/minority voters</span>
+    <span class="px px-guided-up">GUIDED ▲ {DS} (structural enemy is clear)</span>
+    <span class="px px-d">D·est ▼gen (failed to protect) / ▲D-party (mobilising)</span>
+    <span class="px px-rp">RP·est ▲party (map secured)</span>
+    <span class="px px-ds">DS·ins ▲gen (anti-establishment frame confirmed)</span>
+    <span class="px px-r">R·ins ~mixed</span>
+  </div></div>
+</div>
+
+<div class="tnode">
+  <span class="dt">● JUN 23, 2026 — NYC primary sweep: Valdez, Chevalier, Lander win.</span> <b>FACT:</b> Espaillat (5-term, chair of Congressional Hispanic Caucus) lost 49.4–45.9 to Chevalier (32, Columbia encampment organiser). Goldman lost 66–33 to Lander. Valdez won with 62.5% in Hispanic precincts, 32-pt margin over Brooklyn Borough President Reynoso. DSA went 11-of-12 in its slate; 720k doors knocked; 4.2k non-member canvassers vs 2.8k members. Gordillo: "Chi would have won." Jeffries backed all three losing incumbents.
+  <div class="psyche"><span class="ph">Psyche effects (resolved)</span><div class="pg">
+    <span class="px px-angry-up">ANGRY ▲ establishment / ▼ left (vindicated)</span>
+    <span class="px px-guided-up">GUIDED ▲▲ {DS} (model proven, machine quantified)</span>
+    <span class="px px-d">D·est ▼▼gen ▼▼D-party (Jeffries 0-for-3 on home turf)</span>
+    <span class="px px-rp">RP·est ▲party (socialism attack pre-loaded for Nov)</span>
+    <span class="px px-ds">DS·ins ▲▲▲gen ▲▲▲party</span>
+    <span class="px px-r">R·ins ~minimal</span>
+  </div></div>
+  <div class="block news" style="margin-top:6px"><span class="lab">Dispatch — 24 Jun 2026</span>"Three incumbents fell in their own city to a mayor who called this his political home. The machine that did it knocked 720,000 doors and was staffed 60% by people who don't even pay dues. That is not an organisation. That is a movement borrowing an organisation's infrastructure."</div>
+</div>
+
+<div class="tnode">
+  <span class="dt">● JUN 25, 2026 — NYC rent freeze, 7-1 vote.</span> <b>FACT:</b> Rent Guidelines Board — six of nine members Mamdani appointees — froze stabilised rents for the first time in the board's history, affecting ~1M apartments and 2.4M New Yorkers. An owner representative resigned calling it "predetermined theater." Legal challenge expected on grounds the board ignored its own 5.3% operating-cost data. A Robin Hood report found rent regulations kept ~140,000 New Yorkers above the poverty line.
+  <div class="psyche"><span class="ph">Psyche effects (resolved)</span><div class="pg">
+    <span class="px px-angry-dn">ANGRY ▼ tenant (relief) / ▲ landlord</span>
+    <span class="px px-guided-up">GUIDED ▲ {DS} (delivery proven)</span>
+    <span class="px px-d">D·est ~mixed</span>
+    <span class="px px-rp">RP·est ▲party ("rigged board" attack)</span>
+    <span class="px px-ds">DS·ins ▲▲gen ▲▲party</span>
+    <span class="px px-r">R·ins ~neutral</span>
+  </div></div>
+</div>
+
+<div class="tnode">
+  <span class="dt">● JUN 25–26, 2026 — 4 House Rs break on Iran war powers; Letitia James attacks the sweep.</span> <b>FACT:</b> Four House Republicans crossed party lines to pass a war-powers resolution curtailing Trump's Iran operations. Trump: "4 bad Republicans." AG James: Mamdani's candidates "do not understand the politics of New York City… are relatively new to the body politic." Queens BP Donovan Richards on the "You're next" chant: "a majority white audience to a Black man — just harkens back to some dark times."
+  <div class="psyche"><span class="ph">Psyche effects (ongoing)</span><div class="pg">
+    <span class="px px-angry-up">ANGRY ▲ {R} anti-war base</span>
+    <span class="px px-guided-up">GUIDED ▲ {R}-ins (distancing viable)</span>
+    <span class="px px-d">D·est ▲ slightly (bipartisan cover) / ▼ racial-backlash narrative</span>
+    <span class="px px-rp">RP·est ▼party (breaks publicly named)</span>
+    <span class="px px-ds">DS·ins ▼ racial-framing risk / ▲ anti-war alignment</span>
+    <span class="px px-r">R·ins ▲▲gen ▲▲party (rehabilitation begins)</span>
+  </div></div>
+  <div class="block think" style="margin-top:6px"><span class="lab">My read — {R}/{DS} alliance question.</span> The four war-powers defectors and the {DS} bloc voted the same direction — anti-war — with no coordination and for different reasons. That is not an alliance. But it is the structural precondition for one: two factions, hated by the same establishment, agreeing on the same vote. In a +5 House majority, five coincident votes is a coalition whether anyone calls it that or not.</div>
+</div>
+
+<div class="psep"></div>
+
+<h3 style="border-bottom:2px solid #5a5f66;padding-bottom:3px;margin-top:1.2em">Part B — forward nodes (pending; psyche shown conditional on branch)</h3>
+
+<div class="tnode">
+  <span class="dt">▸ 30 JUN 2026 — Colorado, CO-01.</span> <b>FACT:</b> Melat Kiros ({DS}) vs. Diana DeGette, in Congress since 1997. DeGette was nearly denied ballot access in a petition challenge. First export test outside NYC. District is D+26; progressive but not DSA terrain.
+  <div class="win"><span style="background:#7a2a2a">DeGette holds</span><span style="background:#5a5f66">narrow (&lt;5pt)</span><span style="background:#123e8c">Kiros wins</span></div>
+  <div class="px-cond" style="margin-top:6px">
+    <div class="hdr" style="background:#7a2a2a">If DeGette holds</div>
+    <div class="hdr" style="background:#5a5f66">If narrow</div>
+    <div class="hdr" style="background:#123e8c">If Kiros wins</div>
+    <div class="cell">ANGRY ▼ {DS} / ▲ establishment</div><div class="cell">ANGRY ~mixed</div><div class="cell">ANGRY ▲▲ estab. / ▼ left</div>
+    <div class="cell">GUIDED ▼ {DS} (ceiling fear)</div><div class="cell">GUIDED ~ unchanged</div><div class="cell">GUIDED ▲▲ {DS} (model travels)</div>
+    <div class="cell">D·est ▲ relief / RP·est ~ / DS·ins ▼▼ / R·ins ~</div>
+    <div class="cell">D·est ~ / RP·est ~ / DS·ins ~ / R·ins ~</div>
+    <div class="cell">D·est ▼▼ / RP·est ▲party / DS·ins ▲▲▲ / R·ins ~</div>
+  </div>
+</div>
+
+<div class="tnode">
+  <span class="dt">▸ AUG 2026 — MO-01, MI-13, FL-25.</span> <b>FACT:</b> Cori Bush vs Wesley Bell (AIPAC spent heavily to beat her in 2024); Donavan McKinney vs Shri Thanedar; Oliver Larkin vs Jared Moskowitz in a redrawn R-leaning seat. Rematches and redistributed maps.
+  <div class="win"><span style="background:#7a2a2a">shut out (0-for-3)</span><span style="background:#5a5f66">split (1–2)</span><span style="background:#123e8c">sweep (2–3)</span></div>
+  <div class="px-cond" style="margin-top:6px">
+    <div class="hdr" style="background:#7a2a2a">Shut out</div>
+    <div class="hdr" style="background:#5a5f66">Split</div>
+    <div class="hdr" style="background:#123e8c">Sweep</div>
+    <div class="cell">GUIDED ▼▼ {DS} / ANGRY ▲ deflation</div>
+    <div class="cell">GUIDED ~ / ANGRY ~ mixed</div>
+    <div class="cell">GUIDED ▲▲▲ / ANGRY ▲▲ estab.</div>
+    <div class="cell">DS·ins ▼▼ / D·est ▲ relief / RP·est ▲party / R·ins ~</div>
+    <div class="cell">DS·ins ~ / others ~</div>
+    <div class="cell">DS·ins ▲▲▲ / D·est ▼▼ / RP·est ▲party / R·ins ~</div>
+  </div>
+</div>
+
+<div class="tnode">
+  <span class="dt">▸ SEP–OCT 2026 — the environment.</span> <b>FACT:</b> Trump at −25%; gas ~$4 (from ~$3); GOP Iran approval 83%→68%; 4 House Rs already broke on war powers. Hinge: does anger transfer left, or just punish the incumbent generically?
+  <div class="win"><span style="background:#7a2a2a">economy steadies</span><span style="background:#5a5f66">anger punishes Trump only</span><span style="background:#123e8c">anger transfers left</span></div>
+  <div class="px-cond" style="margin-top:6px">
+    <div class="hdr" style="background:#7a2a2a">Economy steadies</div>
+    <div class="hdr" style="background:#5a5f66">Generic anti-Trump</div>
+    <div class="hdr" style="background:#123e8c">Transfers left</div>
+    <div class="cell">ANGRY ▼ / GUIDED ▼ (issue fades) / DS·ins ▼ / R·ins ▼ / RP·est ▲ recovery</div>
+    <div class="cell">ANGRY ▲ / GUIDED ▼ (still unguided) / D·est ▲ / DS·ins ~ / R·ins ▲ (distancing) / RP·est ▼▼</div>
+    <div class="cell">ANGRY ▲▲ / GUIDED ▲▲ (direction: left) / D·est ▲ / DS·ins ▲▲▲ / R·ins ▲ / RP·est ▼▼▼</div>
+  </div>
+  <div class="block think" style="margin-top:6px"><span class="lab">My read — {R} resurgence question.</span> The "economy steadies" and "generic anti-Trump" branches are both fertile ground for {R} resurgence in the general — distancing from Trump costs less when he's unpopular. The "transfers left" branch is the one that most benefits {DS} while pushing {R} into an awkward triangle: they want to distance from {RP} but also can't openly align with socialists. That's where the tacit {R}/{DS} cooperation becomes both most likely and most politically toxic to name.</div>
+</div>
+
+<div class="tnode">
+  <span class="dt">▸ 3 NOV 2026 — the general.</span> <b>FACT:</b> House flip needs +3; Senate +4; redistricting pre-tilts {RP}-ward. {DS} safe seats bank regardless. Axis 1 decided by swing-seat {D} vs {RP}. The feedback-loop question: does a {DS} win this cycle itself become the shock that moves the window further?
+  <div class="win"><span style="background:#7a2a2a">"socialism" attack works → {RP} holds</span><span style="background:#5a5f66">split control</span><span style="background:#123e8c">D House / {DS} pivotal</span></div>
+  <div class="px-cond" style="margin-top:6px">
+    <div class="hdr" style="background:#7a2a2a">{RP} holds both</div>
+    <div class="hdr" style="background:#5a5f66">Split</div>
+    <div class="hdr" style="background:#123e8c">D House</div>
+    <div class="cell">GUIDED ▼ {DS} / ANGRY ▲ left / RP·est ▲▲ / D·est ▼ / DS·ins ▼▼ / R·ins ▼ (absorbed back)</div>
+    <div class="cell">All factions: mixed / window held / no clear mandate</div>
+    <div class="cell">GUIDED ▲▲ {DS} / ANGRY ▲▲ {RP} / D·est ▲ / RP·est ▼▼ / DS·ins ▲▲▲ / R·ins ▲ (leverage)</div>
+  </div>
+</div>
+
+<div class="tnode">
+  <span class="dt">▸ JAN 2027 — the speaker vote.</span> <b>FACT:</b> If House flips narrow, the {DS} bloc's size decides the Jeffries question. Posture: Valdez + Chevalier noncommittal on Jeffries; Lander pro-Jeffries; NYC-DSA co-chair Gordillo declined to rule out a 2028 primary challenge; the speaker rebellion bloc (80+ Dem candidates non-committal) already forming. Gordillo warned Hochul the wing would target her.
+  <div class="win"><span style="background:#7a2a2a">Jeffries safe → window outside the gavel</span><span style="background:#5a5f66">pressure but no change</span><span style="background:#123e8c">bloc denies gavel → window inside the institution</span></div>
+  <div class="px-cond" style="margin-top:6px">
+    <div class="hdr" style="background:#7a2a2a">Jeffries safe</div>
+    <div class="hdr" style="background:#5a5f66">Pressure only</div>
+    <div class="hdr" style="background:#123e8c">Bloc denies gavel</div>
+    <div class="cell">GUIDED ▼ {DS} (Lander faction confirmed as accommodationist) / ANGRY ▲ {DS}-left / D·est ▲ / DS·ins ▼ moderate path</div>
+    <div class="cell">GUIDED ~ / all factions: mixed</div>
+    <div class="cell">GUIDED ▲▲▲ {DS} / ANGRY ▲▲▲ {D}-estab / D·est ▼▼▼ / DS·ins ▲▲▲ / R·ins ▲ (if 1–2 broke w/ {RP} on gavel = historic {R}/{DS} alignment)</div>
+  </div>
+  <div class="block think" style="margin-top:6px"><span class="lab">My read — the {R}/{DS} team-up question.</span> The speaker vote is the single most concrete scenario where {R} and {DS} could align in the same direction without calling it an alliance. A {DS} bloc refusing Jeffries the gavel + 1–2 {R} members also withholding support = Jeffries loses the speakership through a left-right pincer. Neither side endorses the other. They just count the same way. That is how insurgencies of opposite flavours move the Overton window without requiring ideological coherence.</div>
+</div>
+
+<div class="block news"><span class="lab">Dispatch — 27 Jun 2026</span>"Three days from now, a 15-term congresswoman in Denver either stops the clock or watches it run. The country is not being asked whether it likes socialism. It is being asked, one race at a time, whether socialism still loses — and if enough people feel the rent, the gas, and the general wreckage of whoever is in charge, the answer may surprise the people who thought the question was already settled."</div>
+
+<!-- 12 MARGINS -->
+<h2>12 · Margins of possibility</h2>
+<div class="gauge">
+  <span style="background:var(--rp);width:30%">C / toward R: R holds both</span>
+  <span style="background:#5a5f66;width:34%">B: ~50-50 split</span>
+  <span style="background:var(--d);width:26%">D: D House, R Senate</span>
+  <span style="background:var(--ds);width:10%">A: D sweep</span>
+</div>
+<div class="block think"><span class="lab">My read</span>Centre of gravity is B→D: a Democratic House more likely than not on the environment (+3 needed, D+7.2, Trump −25%), a Democratic Senate not (the +4 wall on tilted terrain). <span class="mono">{DS}</span> ends a small pivotal faction either way — unless the shock floor or the feedback loop rewrites it. <span class="mono">{DS}</span> seats flipped by its own candidates: 0 in every scenario.</div>
+
+<!-- 13 MEDIAN VOTER + INATTENTIVE -->
+<h2>13 · The median voter · the inattentive view</h2>
+<div class="block fact"><span class="lab">Fact — radicalized but not guided</span>The political-science record supports a precise version of this. Rising "issue partisanship" is <em>not</em> higher ideological coherence — issue constraint has stayed "essentially stable, and low"; what looks like radicalization is mostly party <em>sorting</em>. Pew: majorities call both parties too extreme (GOP 61%, Dem 57%); frustration is bipartisan. Only 17% think Congress represents them; ~6 in 10 have no confidence the system solves problems.</div>
+<div class="block think"><span class="lab">My read — stress-testing "radicalized"</span>The median voter is radicalized in <b>affect</b> (anger, anti-establishment heat) but not in <b>ideology</b> (no coherent program). The anger is a <em>container</em>, not a direction. That is exactly why the Overton window is up for grabs: whoever fills the container first — <span class="mono">{DS}</span> from the left or <span class="mono">{RP}</span> from the right — wins it, and both are competing to be the vehicle for the same "make the pain stop" demand. The window moves to whichever populism organises the anger faster.</div>
+
+<h3>The inattentive view (illustrative — not data)</h3>
+<div class="block wrong"><span class="lab">Label</span>Characterisation, not a source. The numbers below are <b>invented to depict a format</b> — the flat single figure someone gets if they aren't paying attention and rely on a betting market or one quick AI question. No gambling-market data is used in this model. This is the foil the rigorous version is built against.</div>
+<div style="display:flex;gap:14px;flex-wrap:wrap;margin:10px 0">
+  <div style="flex:1;min-width:240px;border:1px solid #888;border-radius:6px;overflow:hidden">
+    <div style="background:#111;color:#7CFC9A;font-family:'Courier New',monospace;font-weight:bold;padding:6px 10px;font-size:.82em">⟢ betting widget <span style="color:#888;font-weight:normal">(illustrative)</span></div>
+    <div style="padding:10px 12px;font-family:'Courier New',monospace;font-size:.85em;background:#1b1b1b;color:#eee">
+      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #333;padding:3px 0">House <span><b style="color:#5b8cff">DEM 57¢</b> · GOP 43¢</span></div>
+      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #333;padding:3px 0">Senate <span>DEM 28¢ · <b style="color:#ff6b6b">GOP 72¢</b></span></div>
+      <div style="color:#777;margin-top:6px;font-size:.92em">↳ one number. feels like truth. explains nothing.</div>
+    </div>
+  </div>
+  <div style="flex:1;min-width:240px;border:1px solid #888;border-radius:6px;overflow:hidden">
+    <div style="background:#2a2a2a;color:#ddd;font-weight:bold;padding:6px 10px;font-size:.82em">⟢ "hey AI, who wins in November?" <span style="color:#888;font-weight:normal">(illustrative)</span></div>
+    <div style="padding:10px 12px;font-size:.85em;background:#f4f4f4;color:#222;font-style:italic">"Democrats are modestly favored to retake the House while Republicans likely hold the Senate. A close midterm shaped by the economy and the president's approval. Both sides have a path."
+      <div style="color:#888;margin-top:6px;font-style:normal;font-size:.92em">↳ true, bland, and erases everything that matters.</div>
+    </div>
+  </div>
+</div>
+<div class="block think"><span class="lab">My read</span>The danger isn't that the casual answer is false — it's that it's <em>shallowly true</em>. "Dems favored in the House, GOP holds the Senate" ages fine as a headline while teaching nothing about <em>why</em>, missing Axis 2 entirely, treating a price as knowledge, and leaving the reader unable to update when a shock lands. The model above is the opposite: a range, sourced, with dated failure conditions, built to be <em>checked</em>.</div>
+
+<!-- 14 BIAS AUDIT -->
+<h2>14 · Bias audit · what this is NOT</h2>
+<table class="wt">
+  <tr><th>Failure mode</th><th>Control</th></tr>
+  <tr><td>Over-estimating <span class="mono">{DS}</span></td><td>capped ~12; Lander = "favoured, faces a Republican"; CO/MO/MI/FL all <span class="chip c-q">?</span>; A flagged not-2026-realistic</td></tr>
+  <tr><td>Under-estimating <span class="mono">{DS}</span></td><td>"just NYC" is one scenario; machine-as-resource (§10) + feedback loop (§8) so reach &gt; roster</td></tr>
+  <tr><td>Red mislabeled</td><td>corrected ×2: thin <span class="mono">{R}</span> vs dominant <span class="mono">{RP}</span>, plus the tide that turns in generals</td></tr>
+  <tr><td>Ignoring shocks</td><td>shock floor (§8) + banked redistricting tilt (§10) + populist convergence</td></tr>
+  <tr><td>Source hygiene</td><td>no AI reference sites, no betting markets; NYT corroborated before load-bearing</td></tr>
+  <tr><td>False certainty</td><td>range model; the decision tree (§11) is where reality decides. One scenario becomes real; the model does not claim to know which.</td></tr>
+</table>
+<div class="block think"><span class="lab">My read</span><b>What this is NOT:</b> a prediction. It measures the margins of possibility for the people's Overton window — what becomes sayable and electable — using seat scenarios as the instrument and dated, sourced events as the calibration. Built to be falsified. Colorado, 30 June, is the first reading.</div>
+
+<p class="src">Sources verified 27 Jun 2026, AI-free and using no betting markets: Ballotpedia &amp; Wikipedia (2026 House/Senate, redistricting, DSA); RaceToTheWH / 270toWin (Cook–Sabato–Inside Elections composite) / USPollingData / RealClearPolling for the +3 flip number and the D+7.2 generic-ballot average; Economist/YouGov &amp; The Hill for Trump net approval −25%, the Iran-war/gas figures, GOP base erosion, and the four war-powers defectors; Fox, The Hill, New Republic, Yahoo News, The Mirror for the Trump–Mamdani exchange ("same ideas that I have"); PBS / NBC / MultiState for redistricting; CBS New York for NY-10; Pew &amp; peer-reviewed polarization research (issue-constraint "stable and low"; both parties "too extreme") for the median-voter section; DSA <i>Democratic Left</i> &amp; National Electoral Commission tracker, City &amp; State, Spectre, DSA Momentum platform for the wing's own strategy. Hemicycle seat heights are illustrative model outputs; partisan totals anchored to forecast ranges; the <span class="mono">{DS}</span>/<span class="mono">{D}</span> and <span class="mono">{R}</span>/<span class="mono">{RP}</span> splits are estimates, not measured counts. Betting-market figures appear only in the clearly-labelled illustrative "inattentive view" and are invented to depict a format.</p>
+
+<script>
+function H(id,c){
+  const total=435,rows=12,cx=150,cy=150,rI=42,rO=140;
+  const rad=[];for(let i=0;i<rows;i++)rad.push(rI+(rO-rI)*i/(rows-1));
+  const rs=rad.reduce((a,b)=>a+b,0);let spr=rad.map(r=>Math.max(3,Math.round(total*r/rs)));
+  let d=total-spr.reduce((a,b)=>a+b,0),k=rows-1;while(d!==0){spr[k]+=Math.sign(d);d-=Math.sign(d);k=(k-1+rows)%rows;}
+  const o=[],p=(n,col)=>{for(let j=0;j<n;j++)o.push(col)};
+  p(c.ds,'var(--ds)');p(c.d,'var(--d)');p(c.r,'var(--r)');p(c.rp,'var(--rp)');
+  while(o.length<total)o.push('#ddd');o.length=total;
+  const sl=[];for(let row=0;row<rows;row++){const n=spr[row];for(let s=0;s<n;s++){const t=n===1?.5:s/(n-1);sl.push({a:Math.PI*(1-t),r:rad[row]});}}
+  sl.sort((x,y)=>y.a-x.a);let h='';
+  for(let i=0;i<sl.length;i++){const s=sl[i];const x=cx+s.r*Math.cos(s.a),y=cy-s.r*Math.sin(s.a),col=o[i]||'#ddd';h+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.9" fill="${col}" stroke="rgba(0,0,0,.15)" stroke-width="0.6"/>`;}
+  document.getElementById(id).innerHTML=h;
+}
+H('hA',{ds:58,d:170,r:10,rp:197});
+H('hD',{ds:12,d:211,r:10,rp:202});
+H('hB',{ds:8,d:208,r:12,rp:207});
+H('hC',{ds:7,d:191,r:12,rp:225});
+</script>
+</div>
+</body>
+</html>

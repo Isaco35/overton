@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Overton Mobile Preview</title>
+    <style>
+      :root { color-scheme: dark; }
+      body { margin: 0; background: #202124; color: #e8eaed; font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+      .page { max-width: 980px; min-height: 100vh; margin: 0 auto; padding: 16px 16px 40px; background: #242526; border-left: 1px solid #3c4043; border-right: 1px solid #3c4043; }
+      .notice { margin-bottom: 16px; padding: 16px; border-radius: 10px; background: #242526; border: 1px solid #3c4043; color: #e8eaed; line-height: 1.6; }
+      .notice strong { color: #ffffff; }
+      #root { width: 100%; }
+      .error { color: #f28b82; background: #3c1218; border: 1px solid #74252e; border-radius: 12px; padding: 14px; font-size: 14px; word-break: break-word; }
+      a { color: #88a3e8; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      @media (max-width: 640px) {
+        .page { padding: 12px 12px 32px; }
+        .notice { font-size: 14px; }
+      }
+    </style>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.24.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div class="page">
+      <div class="notice">
+        <strong>Mobile preview</strong> — open this HTML file, not the JSX source. If your browser blocks local fetch, use Live Server.
+      </div>
+      <div id="root">Loading Overton 0.7.0…</div>
+    </div>
+    <script>
+      async function mountOverton() {
+        try {
+          const source = await fetch('./overton_070.jsx');
+          if (!source.ok) throw new Error('Unable to load overton_070.jsx');
+          let text = await source.text();
+
+          text = text
+            .replace(/import\s+\{([^}]+)\}\s+from\s+["']react["'];?/g, (_, names) => {
+              return `const { ${names.trim()} } = React;`;
+            })
+            .replace(/export\s+default\s+function\s+(\w+)\s*\(/, 'function $1(')
+            .replace(/export\s+default\s+/, '');
+
+          const result = Babel.transform(text, {
+            presets: [['react', { runtime: 'classic' }]],
+            plugins: [['transform-react-jsx', { pragma: 'React.createElement', pragmaFrag: 'React.Fragment' }]],
+            filename: 'overton_070.jsx'
+          });
+
+          const code = result.code + '\nreturn Overton;';
+          const componentFactory = new Function('React', 'ReactDOM', code);
+          const Overton = componentFactory(React, ReactDOM);
+
+          const root = ReactDOM.createRoot(document.getElementById('root'));
+          root.render(React.createElement(Overton));
+        } catch (error) {
+          console.error(error);
+          document.getElementById('root').innerHTML = '<div class="error">' + error.toString() + '</div>';
+        }
+      }
+
+      mountOverton();
+    </script>
+  </body>
+</html>
