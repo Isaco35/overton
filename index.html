@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overton Preview</title>
+    <style>
+      body { margin: 0; font-family: sans-serif; background: #0f1720; color: #e2e8f0; min-height: 100vh; }
+      #root { min-height: 100vh; padding: 28px; background: #111827; color: #e2e8f0; }
+      .error { color: #fee2e2; background: rgba(255, 69, 58, 0.12); padding: 16px; border-radius: 8px; font-family: monospace; white-space: pre-wrap; border: 1px solid rgba(248, 113, 113, 0.35); }
+    </style>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.24.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      const React = window.React;
+      const ReactDOM = window.ReactDOM;
+
+      async function loadPreview() {
+        try {
+          const params = new URLSearchParams(window.location.search);
+          const fileName = params.get('file') || 'overton_070.jsx';
+          const source = await fetch('./' + fileName).then((r) => {
+            if (!r.ok) throw new Error('Could not load ' + fileName + ' from ' + window.location.pathname);
+            return r.text();
+          });
+
+          const adapted = source
+            .replace(/import\s+\{([^}]+)\}\s+from\s+["']react["'];?/g, (_, m) => `const { ${m.trim()} } = React;`)
+            .replace(/export default function\s+/g, 'function ')
+            .replace(/export default\s+/g, '');
+
+          const { code } = Babel.transform(adapted, {
+            presets: [['react', { runtime: 'classic' }]],
+            plugins: [['transform-react-jsx', { pragma: 'React.createElement', pragmaFrag: 'React.Fragment' }]],
+            filename: 'overton_045.jsx'
+          });
+
+          const fn = new Function('React', 'ReactDOM', `${code}\nreturn Overton;`);
+          const Overton = fn(React, ReactDOM);
+          const root = document.getElementById('root');
+          ReactDOM.createRoot(root).render(React.createElement(Overton));
+        } catch (err) {
+          console.error(err);
+          document.getElementById('root').innerHTML = '<div class="error">' + String(err) + '</div>';
+        }
+      }
+
+      loadPreview();
+    </script>
+  </body>
+</html>
