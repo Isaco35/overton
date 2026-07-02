@@ -234,7 +234,9 @@ Corrected in build: "Hong polling top of field" overstated — Feb Marquette Hon
 11/Barnes 10 (65% undecided); the May 26/22/15 poll was commissioned by the
 Rodriguez campaign + aligned org (now disclosed); Capital One suit not just
 "campaign says paid" — paid and DISMISSED; "PBS Wisconsin" stream detail was
-garbled — it was Piker's own stream, ~$57k raised for Hong. New field facts:
+garbled — user confirms there is no PBS Wisconsin involved: it was Hasan's own
+hasanabi Twitch stream, ~$57k raised for Hong. All Jun 28 "PBS Wisconsin"
+references above are contaminated; read them as "Piker's Twitch stream." New field facts:
 Hughes suspended, endorsed Rodriguez; Brennan in field. Volunteer/donor counts
 labeled campaign-reported. Sources section updated; Wisconsin no longer flagged
 unverified.

@@ -240,6 +240,9 @@ Hong 11%/Barnes 10% (65% undecided, 6.3% MoE, gap "meaningless" per Franklin);
 the May poll showing Barnes 26/Hong 22/Rodriguez 15 was commissioned by the
 Rodriguez campaign + an aligned org (The Recombobulation Area disclosure), now
 disclosed in the node. (2) "Hasan streamed Hong on PBS Wisconsin" was garbled —
+user clarification Jul 2: there is no "PBS Wisconsin" involved at all; it was
+Hasan's own hasanabi Twitch stream. "PBS" was pure contamination in the Jun 28
+compile —
 Hong appeared on Piker's own stream Jun 29, raised ~$57k. (3) "Campaign says
 paid" on the Capital One $30k suit is stale — suit was DISMISSED after payment
 (WKOW). NEW FIELD FACTS: Missy Hughes suspended campaign in June, endorsed
