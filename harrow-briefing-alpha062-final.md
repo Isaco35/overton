@@ -274,5 +274,28 @@ transcript incident. Node, Background tab, and Sources all corrected in build.
 candidate attribution does not.
 
 ════════════════════════════════════════════════════════════════════════════════
-END BRIEFING α0.6.2 / α0.6.3 / α0.7.0 (+ Jul 2 patches I–II)
+α0.7.2 — ZOMENTUM GROUNDED, FALSIFICATION REGISTER — July 2, 2026
+════════════════════════════════════════════════════════════════════════════════
+
+[2026-07-02] ZOMENTUM DECOMPOSED (supersedes all prior Zomentum definitions):
+Four components, each grounded: (1) direct endorsement effect — real, NYC-only,
+3-for-3; (2) infrastructure export — DSA/JD machinery + Sanders network is what
+actually traveled to Colorado, NOT Mamdani's word; (3) narrative pull — press
+frames CO/WI/MI as his tests; (4) brand drag — GOP runs Mamdani-tie ads in
+MI/CO. CRITICAL FACT: Mamdani has endorsed no one outside NYC (Ballotpedia,
+Jul 2). He stayed in his lane. Approval 43–48%, net +16/+18 at 100 days.
+
+[2026-07-02] FALSIFICATION REGISTER COMMITTED (F1–F4, pre-August): F1 Hong
+3rd-or-worse → statewide transfer dies. F2 DS 0-for-3 August → infrastructure
+claim dies, compounding disabled. F3 El-Sayed loses → Senate tier dies. F4 DS
+underperforms generic-D where GOP ran Mamdani ads in Nov → sign flips negative.
+Rules: fired condition kills its claim; post-hoc rescue prohibited, and if it
+happens anyway it gets logged as model failure. Conditions added/amended only
+BEFORE their events. Model-level falsifiers still to be drafted — next task.
+
+[2026-07-02] MINNESOTA FLAG: Star Tribune frames the MN Senate race as another
+DS-travel test — potential future node, not yet modeled.
+
+════════════════════════════════════════════════════════════════════════════════
+END BRIEFING α0.6.2 / α0.6.3 / α0.7.0 (+ Jul 2 patches I–III, current build α0.7.2)
 ════════════════════════════════════════════════════════════════════════════════

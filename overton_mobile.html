@@ -33,8 +33,8 @@
     <script>
       async function mountOverton() {
         try {
-          const source = await fetch('./overton_071.jsx');
-          if (!source.ok) throw new Error('Unable to load overton_071.jsx');
+          const source = await fetch('./overton_072.jsx');
+          if (!source.ok) throw new Error('Unable to load overton_072.jsx');
           let text = await source.text();
 
           text = text
@@ -47,7 +47,7 @@
           const result = Babel.transform(text, {
             presets: [['react', { runtime: 'classic' }]],
             plugins: [['transform-react-jsx', { pragma: 'React.createElement', pragmaFrag: 'React.Fragment' }]],
-            filename: 'overton_071.jsx'
+            filename: 'overton_072.jsx'
           });
 
           const code = result.code + '\nreturn Overton;';

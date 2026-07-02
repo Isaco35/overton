@@ -330,12 +330,42 @@ is invisible to it. Logged as a standing blind spot.
 Rule amendment (version bump checklist): version strings live in overton_NNN.jsx
 (×3), fetch targets in index/preview/mobile html, AND overton_frame.json.
 
+[Jul 2] BUILD / OVERTON — α0.7.2: ZOMENTUM GROUNDED + FALSIFICATION REGISTER
+User directive: "lets work on falsifying the entire model but beginning with
+the zomentum." Research findings (WebSearch, Ballotpedia/Emerson/Marist/TIME/
+NBC/The Hill/Fox):
+CONFIRMED: NYC endorsement effect real — 3-for-3 (Valdez, Lander, Avila
+Chevalier), two incumbents unseated, Jeffries on losing side. Approval at 100
+days: 43–48%, net +16/+18. Press frames CO/WI/MI (and MN Senate) as tests of
+his momentum. GOP running Mamdani-tie attack ads in MI + CO.
+KEY NEGATIVE FINDING: Mamdani has endorsed NO ONE outside NYC (Ballotpedia
+ledger, Jul 2). Kiros ran on Sanders' endorsement. The build's "borrowed
+credibility" mechanism was overstated — what exported to Colorado was DSA/JD
+machinery, Sanders network, small-dollar energy, and media narrative. User:
+"he largely stayed in his lane." Now stated as FACT in the build.
+CHANGES: Background Zomentum section rewritten as 4-part grounded
+decomposition (direct endorsement/infrastructure/narrative/brand drag); old
+falsifiability warn block replaced — conditions now exist; NEW Falsification
+register table in Methodology with pre-committed conditions F1–F4 (dated
+before any August result): F1 Hong 3rd-or-worse Aug 11 → statewide transfer
+claim dies; F2 DS 0-for-3 in August → repeatable-infrastructure claim dies,
+compounding disabled; F3 El-Sayed loses Aug 4 → Senate tier dies; F4 DS
+underperforms generic-D in Mamdani-attack swing districts in Nov → Zomentum
+sign flips negative for generals. Register rules: fired condition kills its
+claim, post-hoc rescue prohibited and logged as model failure, conditions
+only added/amended BEFORE their events. Bias-audit row updated to RESOLVED.
+Kings note constrained. Sources extended. Version bump per standing rule:
+overton_071.jsx → overton_072.jsx, strings ×3, fetch targets ×3, frame json.
+NEXT: model-level falsifiers (physics, scenario coverage, psyche coupling) —
+to be drafted and added to the register before the events they reference.
+
 ═══════════════════════════════════════════════════════════════════════════════
 OPEN ISSUES
 ═══════════════════════════════════════════════════════════════════════════════
 
-Zomentum unfalsifiability — flagged, not resolved. Needs a human-set
-disconfirmation condition; a UI warning isn't a fix.
+Zomentum unfalsifiability — RESOLVED Jul 2 (α0.7.2): Falsification register
+F1–F4 committed before the August events. Remaining: model-level falsifiers
+(physics, scenario coverage) still to be drafted and registered.
 
 RAMP_FLOOR=4 is a starting value, not a calibrated one — pending user tuning in
 VSC.
