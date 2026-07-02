@@ -257,6 +257,51 @@ Edits this session (wisconsin node, Sources, index.html) are LOCAL ONLY until
 the user pushes to the isaco35.github.io repo. The live page still serves the
 pre-correction copies until then.
 
+[Jul 2] GROUNDING PASS II — "THE PROTEIN" (all resolved-node facts re-verified)
+User directive: infrastructure done, ground the article's substance. Every
+factual claim in the nine resolved nodes + three forward nodes independently
+re-verified via WebSearch. CONFIRMED AS WRITTEN: Mamdani 50.78%; DSA Resolution
+22 675–524 (56.3%), Aug 8–10 2025; Kiros result; Trump −25 net (The Hill,
+Reuters/Ipsos); Bush/Bell + McKinney/Thanedar Aug 4 with Justice Dems
+endorsements; Larkin/Moskowitz real (FL-25 under redrawn map); free-buses
+pledge conceded unfulfilled for 2026 (Albany controls).
+CORRECTED IN BUILD:
+(1) Mamdani turnout "highest since 1993" → 2M+ votes, first since 1969.
+(2) Massie: added result 54.9–45.1 (May 19); "AIPAC $15.8M" → sourced
+    "pro-Israel groups $9M+" of $32M+ total; "Trump-recruited" → Trump-endorsed.
+(3) SCOTUS node was miscast: §2 gutting was Louisiana v. Callais, Apr 29 2026,
+    6–3 (not "Jun 2"); Alabama map order followed; "Virginia Democratic map
+    struck down" was actually the VIRGINIA Supreme Court killing the
+    redistricting amendment on procedural grounds May 8, SCOTUS declining
+    appeal. Node relabeled and rewritten.
+(4) NYC sweep: Goldman margin 66–33 → 62–38 (AP call); Espaillat margin to
+    49–46 at call; "DSA 11-of-12" + "720k doors" now labeled movement-press
+    figures, not independently confirmed.
+(5) Rent freeze: "first freeze in RGB history" was FALSE — one-year freezes
+    existed under de Blasio; corrected to first TWO-YEAR freeze. Added landlord
+    rep's pre-vote resignation.
+(6) War powers: date was wrong (Jun 25–26 → Jun 3); added 215–208 and the four
+    names (Massie, Fitzpatrick, Barrett, Davidson); noted symbolic status.
+
+[Jul 2] ISSUE #017 / RESOLVED — BOWMAN CONTAMINATION IN MICHIGAN NODE
+Advanced: NODE_004 and the briefing carried Jamaal Bowman as Michigan Senate
+frontrunner, sourced to the Kornacki transcript's unnamed "he" [00:31:18]. The
+verified field is Abdul El-Sayed (leading 37.2/29.9/11.5 over Stevens and
+McMorrow as of Jul 1; Sanders + Van Hollen endorsements), primary Aug 4.
+Bowman is not a candidate.
+Layman: the model said the wrong guy was running in Michigan. The person
+actually leading is El-Sayed.
+Mechanism: same as ISSUE #011 — the transcript that produced the fabricated
+El-Sayed reference then produced a Bowman attribution that stuck for three
+days across briefing, node, and Background tab. The irony is exact: the name
+Claude fabricated in #011 (El-Sayed) turned out to be the real candidate, and
+the name it "correctly read" (Bowman) was the contamination.
+Fix: node rewritten with verified field + explicit CORRECTION block; Background
+tab Michigan section gets a FACT retraction; Zomentum tier list "Abdul/Bowman"
+→ "El-Sayed"; Sources line retracts the Bowman attribution and marks the
+transcript's referent unresolved. Kornacki's Michigan-as-test framing survives;
+the candidate attribution does not.
+
 ═══════════════════════════════════════════════════════════════════════════════
 OPEN ISSUES
 ═══════════════════════════════════════════════════════════════════════════════

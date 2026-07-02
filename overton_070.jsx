@@ -64,7 +64,7 @@ const NODES = [
   {
     id:"mamdani_win", date:"NOV 4, 2025", resolved:true, branch:"win",
     label:"Mamdani wins NYC general",
-    detail:"Won 50.78%, highest NYC mayoral turnout since 1993. First Muslim, first South Asian mayor. Eugene Debs quote in victory speech.",
+    detail:"Won 50.78%, defeating Cuomo (~42%, independent) and Sliwa (~7%). 2M+ votes cast — first time NYC mayoral turnout topped 2M since 1969. First Muslim, first South Asian mayor. Eugene Debs quote in victory speech.",
     read:"This is where we start calling it \"Zomentum\" — a name Harrow gave the pattern, not a measured force. It's a CONSTRUCT: useful for describing a pattern, unproven as a causal mechanism. Flagged in the 2026-07-01 grounding pass.",
     branches:{
       win:  { label:"Wins",  positionDelta:1.2,  psyche:{ angry:1, guided:2, zomentum:3, DS:3, D:-1, RP:1, R:0 } },
@@ -91,9 +91,9 @@ const NODES = [
     searchTerms:["DSA national convention 2025 anti-Zionist resolution vote"],
   },
   {
-    id:"massie_primaried", date:"MAY 2026", resolved:true, branch:"culled",
-    label:"Massie primaried out by Trump-recruited Gallrein",
-    detail:"$32M+ most expensive House primary ever. AIPAC spent $15.8M+. Trump: \"the worst congressman in the history of our country.\"",
+    id:"massie_primaried", date:"MAY 19, 2026", resolved:true, branch:"culled",
+    label:"Massie primaried out by Trump-endorsed Gallrein",
+    detail:"Gallrein 54.9%, Massie 45.1% (KY-04, May 19). $32M+ in ad spending — most expensive House primary ever; pro-Israel groups $9M+ of it. Trump targeted Massie over Epstein files, Iran-war criticism, tax-bill vote.",
     branches:{
       culled:   { label:"Culled",   positionDelta:-0.6, psyche:{ angry:1, guided:-1, zomentum:0, DS:1, D:0, RP:1, R:-2 } },
       survived: { label:"Survived", positionDelta:0.6,  psyche:{ angry:2, guided:1,  zomentum:0, DS:0, D:0, RP:-2, R:2 } },
@@ -103,7 +103,7 @@ const NODES = [
   {
     id:"iran_war_approval", date:"EARLY 2026", resolved:true, branch:"collapsed",
     label:"Iran war — Trump at −25% net approval",
-    detail:"Gas ~$3→~$4/gal. GOP Iran approval 83%→68%. Economic optimism among Republicans 50%→29%. Only ¼ say U.S. won.",
+    detail:"Gas ~$3→~$4/gal. GOP Iran approval 83%→68%. Economic optimism among Republicans 50%→29%. Only ¼ say U.S. won. (−25 net re-confirmed Jul 2: The Hill, Reuters/Ipsos 35/63. GOP-internal splits per Jun 27 compile, Economist/YouGov — not re-verified.)",
     branches:{
       collapsed: { label:"Collapsed", positionDelta:1.2,  psyche:{ angry:2, guided:-1, zomentum:0, DS:1, D:1, RP:-2, R:1 } },
       held:      { label:"Held",      positionDelta:-0.6, psyche:{ angry:-1, guided:0, zomentum:0, DS:-1, D:-1, RP:1, R:-1 } },
@@ -111,9 +111,9 @@ const NODES = [
     searchTerms:["Trump approval rating Iran war 2026 poll"],
   },
   {
-    id:"scotus_vra", date:"JUN 2, 2026", resolved:true, branch:"gutted",
-    label:"SCOTUS removes Milligan injunction; VRA §2 gutted",
-    detail:"Eliminated Alabama majority-Black congressional seat mid-cycle. Virginia Democratic map struck down. Net: map pre-tilted toward {RP}.",
+    id:"scotus_vra", date:"APR–JUN 2026", resolved:true, branch:"gutted",
+    label:"SCOTUS guts VRA §2 (Louisiana v. Callais)",
+    detail:"Louisiana v. Callais, Apr 29, 2026, 6–3: VRA §2 rendered effectively inoperable — Milligan not formally overturned but effectively nullified. Court subsequently let Alabama use a map a lower court found intentionally discriminatory. Separately: Virginia's own Supreme Court struck the state's voter-approved redistricting amendment on procedural grounds (May 8); SCOTUS declined the emergency appeal. Net: map pre-tilted toward {RP}.",
     branches:{
       gutted:    { label:"Gutted",    positionDelta:-0.6, psyche:{ angry:2, guided:1, zomentum:0, DS:1, D:-1, RP:1, R:0 } },
       preserved: { label:"Preserved", positionDelta:0.6,  psyche:{ angry:-1, guided:0, zomentum:0, DS:0, D:1, RP:-1, R:0 } },
@@ -123,7 +123,7 @@ const NODES = [
   {
     id:"nyc_sweep", date:"JUN 23, 2026", resolved:true, branch:"swept",
     label:"NYC primary sweep: Valdez, Chevalier, Lander win",
-    detail:"Espaillat (5-term) lost 49.4–45.9. Goldman lost 66–33. DSA went 11-of-12. 720k doors knocked. Jeffries 0-for-3 on home turf. Kornacki: \"huge and massive ramifications\" but \"limits within the city.\"",
+    detail:"Avila Chevalier over Espaillat (5-term) 49–46 at AP call (NY-13). Lander over Goldman 62–38 (NY-10). Valdez over Reynoso 57–34 for Velázquez's open NY-07. All three Mamdani-backed; Avila Chevalier and Valdez NYC-DSA-endorsed. \"DSA 11-of-12\" and \"720k doors\" are movement-press figures, not independently confirmed. Kornacki: \"huge and massive ramifications\" but \"limits within the city.\"",
     branches:{
       swept:    { label:"Swept",    positionDelta:1.8,  psyche:{ angry:-1, guided:3, zomentum:3, DS:3, D:-2, RP:1, R:0 } },
       partial:  { label:"Partial",  positionDelta:0.6,  psyche:{ angry:0,  guided:1, zomentum:1, DS:1, D:0,  RP:0, R:0 } },
@@ -134,7 +134,7 @@ const NODES = [
   {
     id:"rent_freeze", date:"JUN 25, 2026", resolved:true, branch:"froze",
     label:"NYC rent freeze — 7-1 RGB vote",
-    detail:"First freeze in RGB history. 6 of 9 members Mamdani appointees. ~1M apartments, 2.4M New Yorkers. Legal challenge expected.",
+    detail:"First TWO-YEAR freeze in RGB history (one-year freezes happened under de Blasio). 7–1 vote, Jun 25; landlord rep resigned hours before, calling it a \"legal line\" crossed. 6 of 9 members Mamdani appointees. ~1M rent-stabilized apartments; applies to leases Oct 2026–Sep 2027.",
     read:"We're calling this Mamdani's \"credibility floor\" in the Zomentum frame. That's our label for why this delivery matters, not an independent fact about how voters weigh it.",
     branches:{
       froze:    { label:"Froze",    positionDelta:0.9,  psyche:{ angry:-1, guided:2, zomentum:1.5, DS:2, D:0, RP:1, R:0 } },
@@ -143,9 +143,9 @@ const NODES = [
     searchTerms:["NYC rent freeze RGB vote June 2026"],
   },
   {
-    id:"war_powers_defectors", date:"JUN 25–26, 2026", resolved:true, branch:"broke",
+    id:"war_powers_defectors", date:"JUN 3, 2026", resolved:true, branch:"broke",
     label:"4 House Rs break on Iran war powers",
-    detail:"Four Republicans crossed to pass war-powers curtailing Trump's Iran operations. Trump: \"4 bad Republicans.\" {R} behaviour reviving as Trump weakens.",
+    detail:"House passed war-powers resolution 215–208, Jun 3. Massie, Fitzpatrick, Barrett, Davidson crossed. Largely symbolic — Senate blocked, veto certain. Trump: \"4 bad Republicans.\" {R} behaviour reviving as Trump weakens.",
     branches:{
       broke:     { label:"Broke",     positionDelta:0.6,   psyche:{ angry:1, guided:1, zomentum:0, DS:0.5, D:0.5, RP:-1, R:2 } },
       submitted: { label:"Submitted", positionDelta:-0.3,  psyche:{ angry:0, guided:0, zomentum:0, DS:0, D:0, RP:0.5, R:-1 } },
@@ -183,7 +183,7 @@ const NODES = [
   {
     id:"august_congress", date:"AUG 2026", resolved:false, branch:null,
     label:"MO-01, MI-13, FL-25 Congressional Primaries",
-    detail:"Cori Bush vs Wesley Bell (MO-01). Donavan McKinney vs Shri Thanedar (MI-13). Oliver Larkin vs Jared Moskowitz (FL-25). Rematches and redistricted maps. β threshold node — all three of Colorado + Wisconsin + August must resolve before β0.1.0 unlocks.",
+    detail:"Cori Bush vs Wesley Bell rematch (MO-01, Aug 4) — Justice Dems endorse Bush; prediction markets Bush 55/Bell 41. Donavan McKinney vs Shri Thanedar (MI-13, Aug 4) — Justice Dems endorse McKinney; markets McKinney 66/Thanedar 33. Oliver Larkin vs Jared Moskowitz (FL-25 under redrawn map — Moskowitz's old seat was FL-23; Aug 18) — Moskowitz led 49–12 in early polling; Piker headlined Larkin fundraiser. β threshold node — all three of Colorado + Wisconsin + August must resolve before β0.1.0 unlocks.",
     branches:{
       sweep:   { label:"DS sweep (2–3)",   positionDelta:2.0,  psyche:{ angry:2, guided:3, zomentum:2, DS:3, D:-2, RP:1, R:0 } },
       split:   { label:"Split (1–2)",      positionDelta:0.6,  psyche:{ angry:0, guided:1, zomentum:1, DS:1, D:0, RP:0, R:0 } },
@@ -193,9 +193,9 @@ const NODES = [
     urgency:"upcoming",
   },
   {
-    id:"michigan_senate", date:"AUG 2026", resolved:false, branch:null,
+    id:"michigan_senate", date:"AUG 4, 2026", resolved:false, branch:null,
     label:"Michigan Senate Democratic Primary — β-phase node",
-    detail:"Democratic Senate primary in Michigan. Kornacki (You Decide with Errol Louis, June 25, 2026, [00:31:18]): \"I think the test to me that's coming up this year is Michigan... If he is the nominee in Michigan in 2026 in a climate that I think nationally is pretty favorable to Democrats, how does he do? Is he able to win Michigan as a sort of Mondaire style candidate? If he's able to do that, I think that's a very significant moment.\" Open seat, swing state (Trump won 2016 + 2024). Senate = structural leverage in 50-50 chamber.",
+    detail:"Open seat (Peters retiring), swing state. Verified field: Abdul El-Sayed ({DS}-aligned; Sanders + Van Hollen endorsements), Rep. Haley Stevens (Schumer-backed), state Sen. Mallory McMorrow. Polling Jul 1: El-Sayed 37.2%, Stevens 29.9%, McMorrow 11.5% (RCP avg: 35.0/29.7/7.7). Primary Aug 4. CORRECTION (Jul 2 grounding): earlier project notes named Jamaal Bowman as the frontrunner here — Bowman is NOT a candidate in this race; that claim traced to a misread of the Kornacki transcript (You Decide with Errol Louis, Jun 25, [00:31:18]), whose \"he\" referent is uncertain. Kornacki's framing of Michigan as the scale test stands: \"Is he able to win Michigan as a sort of Mondaire style candidate? If he's able to do that, I think that's a very significant moment.\" Senate = structural leverage in a 50-50 chamber.",
     read:"We're calling this the terminal Zomentum test — our claim that this is where the construct either earns its keep or breaks. That claim is itself unverified until it happens.",
     branches:{
       ds_wins:  { label:"DS candidate wins primary",        positionDelta:4.0,  psyche:{ angry:2, guided:3, zomentum:4, DS:3, D:-2, RP:1, R:0 } },
@@ -970,15 +970,15 @@ export default function Overton() {
           <p><strong>R — Anti-Trump Republicans.</strong> Shrinking lane. Four House Republicans crossed on Iran war powers in June 2026. Massie culled in May. Leverage is procedural.</p>
           <p><strong>RP — Trump Loyalists.</strong> Testing executive power ceiling at −25% approval. Iran war is the first major window-narrowing event for this faction.</p>
           <h2>Zomentum</h2>
-          <p>Zomentum is the gravitational pull of Zohran Mamdani's 2025 NYC mayoral victory on every subsequent {"{DS}"} candidate. Mamdani's unmet promises (free buses) are read here as narrative proof the system is rigged — not proof of failure. His delivered wins (rent freeze, housing plan) are read as a credibility floor. Each {"{DS}"} candidate running after him is read as borrowing his legitimacy and extending it to a new tier: Kiros (House), Hong (Governor), August slate (congressional repeatability), Abdul/Bowman (Senate structural power). In the physics model, Zomentum is the coupling variable that determines whether ANGRY and GUIDED amplify together (compounding acceleration) or dissipate (friction).</p>
+          <p>Zomentum is the gravitational pull of Zohran Mamdani's 2025 NYC mayoral victory on every subsequent {"{DS}"} candidate. Mamdani's unmet promises (free buses) are read here as narrative proof the system is rigged — not proof of failure. His delivered wins (rent freeze, housing plan) are read as a credibility floor. Each {"{DS}"} candidate running after him is read as borrowing his legitimacy and extending it to a new tier: Kiros (House), Hong (Governor), August slate (congressional repeatability), El-Sayed (Senate structural power). In the physics model, Zomentum is the coupling variable that determines whether ANGRY and GUIDED amplify together (compounding acceleration) or dissipate (friction).</p>
           <div className="block warn">
             <span className="lab">Falsifiability risk — flagged, not resolved</span>
             As written, Zomentum can absorb any outcome: a win extends it, a loss ("free buses failed") gets read as proof the system is rigged rather than proof the theory is wrong. That's the exact shape of an unfalsifiable claim — the thing Harrow's own founding principle warns against ("if it can't be proven wrong, it's a hallucination"). Until Zomentum makes a prediction that a specific result would contradict — not just explain after the fact — treat it as a narrative construct, not a discovered mechanism. This is not fixed by better writing; it needs a pre-committed failure condition, which does not yet exist in this build.
           </div>
           <h2>The Wisconsin signal</h2>
-          <p>Francesca Hong is the most significant new signal in the model since the NYC primary sweep of June 23, 2026. State assembly member, first Asian American Wisconsin legislator, Democratic Socialist, single mother, service worker running for governor. No corporate PAC money. Her campaign draws explicitly on the sewer socialist tradition — Milwaukee's near-fifty-year socialist municipal government that produced Social Security and unemployment insurance. She invokes Fighting Bob LaFollette. As of June 2026 she is polling at the top of a seven-person field. Attack vectors live: police abolition posts (not deleted), Capital One debt lawsuit ($30k, campaign says paid).</p>
+          <p>Francesca Hong is the most significant new signal in the model since the NYC primary sweep of June 23, 2026. State assembly member, first Asian American Wisconsin legislator, Democratic Socialist, single mother, service worker running for governor. No corporate PAC money. Her campaign draws explicitly on the sewer socialist tradition — Milwaukee's near-fifty-year socialist municipal government — and the broader Wisconsin progressive tradition that pioneered unemployment insurance (first in the nation, 1932) and helped shape Social Security. She invokes Fighting Bob LaFollette. As of June 2026 she is top-two: second in the party convention straw poll (23.1% to Rodriguez's 27.5%) and second in a May poll commissioned by the Rodriguez campaign (Barnes 26%, Hong 22%, Rodriguez 15%). Attack vectors live: police abolition posts (not deleted, defended); Capital One debt suit ($30k — paid, dismissed).</p>
           <h2>The Michigan Senate test</h2>
-          <p>NBC News chief data analyst Steve Kornacki identified the Michigan Democratic Senate primary as the critical test of whether {"{DS}"}-style politics can scale beyond safe urban districts: "I think the test to me that's coming up this year is Michigan... If he is the nominee in Michigan in 2026 in a climate that I think nationally is pretty favorable to Democrats, how does he do? Is he able to win Michigan as a sort of Mondaire style candidate? If he's able to do that, I think that's a very significant moment." (Kornacki, You Decide with Errol Louis, June 25, 2026, [00:31:18].) Michigan is a genuine swing state — Trump won it in 2016 and 2024. The Senate seat carries structural leverage in a 50-50 chamber.</p>
+          <p>NBC News chief data analyst Steve Kornacki identified the Michigan Democratic Senate primary as the critical test of whether {"{DS}"}-style politics can scale beyond safe urban districts: "I think the test to me that's coming up this year is Michigan... If he is the nominee in Michigan in 2026 in a climate that I think nationally is pretty favorable to Democrats, how does he do? Is he able to win Michigan as a sort of Mondaire style candidate? If he's able to do that, I think that's a very significant moment." (Kornacki, You Decide with Errol Louis, June 25, 2026, [00:31:18].) Michigan is a genuine swing state — Trump won it in 2016 and 2024. The Senate seat carries structural leverage in a 50-50 chamber. FACT (verified Jul 2, 2026): the actual field for the open seat is Abdul El-Sayed, Haley Stevens, and Mallory McMorrow, with El-Sayed leading (37.2/29.9/11.5, Jul 1); primary is August 4. Jamaal Bowman — named as the Michigan frontrunner in this project's earlier notes, sourced to the transcript above — is not a candidate; that attribution is retracted, and the transcript's \"he\" is treated as unresolved.</p>
           <div className="block think">
             <span className="lab">Harrow's read — interpretation, not fact</span>
             We're calling this the terminal Zomentum test — our claim, not Kornacki's, that this is where the construct either earns its keep or breaks.
@@ -1086,7 +1086,7 @@ export default function Overton() {
 
           <h2>Sources</h2>
           <p className="src" style={{fontSize:".85em", color:"#9ca3af"}}>
-            Mamdani NYC win, Trump–Mamdani meetings, DSA convention, Massie primary, Iran-war approval collapse, SCOTUS VRA/Milligan ruling, NYC primary sweep, rent freeze, House war-powers defectors: sourced per the 27 Jun 2026 model (2026_model.html) — Ballotpedia &amp; Wikipedia; RaceToTheWH / 270toWin (Cook–Sabato–Inside Elections composite); Economist/YouGov &amp; The Hill (Trump approval, Iran/gas figures, GOP base erosion); Fox, The Hill, New Republic, Yahoo News, The Mirror (Trump–Mamdani exchange); PBS / NBC / MultiState (redistricting); Pew (median-voter/polarization); DSA <i>Democratic Left</i> &amp; National Electoral Commission tracker. — Colorado CO-01 result (Kiros defeats DeGette, 49.3%–43.5%, AP called 10:03pm MT 6/30/26): Colorado Sun, Colorado Public Radio, 9News, Colorado Newsline, PBS NewsHour, verified 2026-07-01. — Michigan Senate / Kornacki quote: "You Decide with Errol Louis" podcast transcript, June 25, 2026, [00:31:18], as uploaded by the project owner — not independently re-verified against the original audio by Harrow. — Wisconsin governor primary detail: independently verified 2026-07-02 — Wisconsin Watch &amp; WisPolitics (Jun 14 convention straw poll: Rodriguez 27.5%, Hong 23.1%); WPR/Marquette Feb 25 poll (Hong 11%, Barnes 10%, 65% undecided); Civic Media/The Recombobulation Area (May poll — note: commissioned by the Rodriguez campaign and an aligned organization; Barnes 26%, Hong 22%, Rodriguez 15%); CNN KFile (police-abolition posts); WKOW &amp; The Center Square (Capital One suit paid/dismissed); madison.com (Piker stream Jun 29, ~$57k raised). Volunteer/donor counts are the Hong campaign's own figures, not independently audited. No betting-market data used anywhere in this model.
+            Mamdani NYC win, Trump–Mamdani meetings, DSA convention, Massie primary, Iran-war approval collapse, SCOTUS VRA/Milligan ruling, NYC primary sweep, rent freeze, House war-powers defectors: sourced per the 27 Jun 2026 model (2026_model.html) — Ballotpedia &amp; Wikipedia; RaceToTheWH / 270toWin (Cook–Sabato–Inside Elections composite); Economist/YouGov &amp; The Hill (Trump approval, Iran/gas figures, GOP base erosion); Fox, The Hill, New Republic, Yahoo News, The Mirror (Trump–Mamdani exchange); PBS / NBC / MultiState (redistricting); Pew (median-voter/polarization); DSA <i>Democratic Left</i> &amp; National Electoral Commission tracker. — Colorado CO-01 result (Kiros defeats DeGette, 49.3%–43.5%, AP called 10:03pm MT 6/30/26): Colorado Sun, Colorado Public Radio, 9News, Colorado Newsline, PBS NewsHour, verified 2026-07-01. — Michigan Senate: field, polling, and Aug 4 date verified 2026-07-02 (RealClearPolling, FiftyPlusOne, Ballotpedia, Wikipedia); Kornacki quote from "You Decide with Errol Louis" transcript, June 25, 2026, [00:31:18], as uploaded by the project owner — not re-verified against original audio, and the quote's "he" referent is unresolved; the earlier Bowman attribution is retracted (Bowman is not a candidate). — Wisconsin governor primary detail: independently verified 2026-07-02 — Wisconsin Watch &amp; WisPolitics (Jun 14 convention straw poll: Rodriguez 27.5%, Hong 23.1%); WPR/Marquette Feb 25 poll (Hong 11%, Barnes 10%, 65% undecided); Civic Media/The Recombobulation Area (May poll — note: commissioned by the Rodriguez campaign and an aligned organization; Barnes 26%, Hong 22%, Rodriguez 15%); CNN KFile (police-abolition posts); WKOW &amp; The Center Square (Capital One suit paid/dismissed); madison.com (Piker stream Jun 29, ~$57k raised). Volunteer/donor counts are the Hong campaign's own figures, not independently audited. — Grounding pass 2026-07-02, all resolved nodes independently re-verified: Mamdani 50.78% + 2M-votes-since-1969 turnout (NBC, NPR, Wikipedia); Massie–Gallrein 54.9–45.1, $32M+ spend, pro-Israel $9M+ (NPR, NBC, Al Jazeera); DSA Resolution 22, 675–524, Aug 8–10 2025 Chicago (Left Voice, Drop Site); Louisiana v. Callais Apr 29 2026 6–3 + Alabama map order (supremecourt.gov, Campaign Legal Center, NPR, Slate) + Virginia Supreme Court amendment ruling May 8, SCOTUS appeal declined (NBC, NPR, Virginia Mercury); NYC sweep margins (Roll Call, CBS, NPR, Democracy Now); rent freeze 7–1, first two-year freeze, Jun 25 (Gothamist, TIME, NY1); war-powers 215–208 Jun 3, Massie/Fitzpatrick/Barrett/Davidson (WaPo, TIME, CNN, NPR); Trump −25 net (The Hill, Reuters/Ipsos); August primaries — Bush/Bell + McKinney/Thanedar Aug 4, Justice Dems endorsements (The Downballot, NBC), Larkin/Moskowitz FL-25 poll 49–12 (Florida Politics); free-buses pledge conceded unfulfilled for 2026, Albany controls (amNY, Washington Times). Prediction-market figures cited in the August node are Polymarket odds, quoted as sentiment only — they do not feed the physics. No other betting-market data used anywhere in this model.
           </p>
         </div>
       )}

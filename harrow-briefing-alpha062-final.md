@@ -247,5 +247,30 @@ RAMP_FLOOR=4 tuning (user owns). overton_dev.jsx + scratch.html delete-or-keep
 (user calls, unchanged).
 
 ════════════════════════════════════════════════════════════════════════════════
-END BRIEFING α0.6.2 / α0.6.3 / α0.7.0 (+ Jul 2 deployment/verification patch)
+GROUNDING PASS II — July 2, 2026 (content verification, "the protein")
+════════════════════════════════════════════════════════════════════════════════
+
+[2026-07-02] ALL RESOLVED NODES RE-VERIFIED: Confirmed: Mamdani 50.78%; DSA
+resolution 675–524; Kiros result; Trump −25 net; August races real, Aug 4 (MO/MI)
+and Aug 18 (FL). Corrected: turnout claim (1993→1969, 2M+ votes); Massie result
+added (54.9–45.1, May 19), AIPAC figure replaced with sourced pro-Israel $9M+;
+SCOTUS node recast (Louisiana v. Callais, Apr 29, 6–3; Virginia was the state
+supreme court, procedural); Goldman margin 62–38; rent freeze is first TWO-YEAR
+freeze, not first ever; war-powers vote was Jun 3, 215–208, four names added.
+
+[2026-07-02] NODE_004 CORRECTION — BOWMAN RETRACTED (ISSUE #017): Jamaal Bowman
+is NOT running for Michigan Senate. Verified field: Abdul El-Sayed (leading,
+37.2/29.9/11.5 Jul 1, Sanders + Van Hollen endorsements), Haley Stevens
+(Schumer-backed), Mallory McMorrow. Primary Aug 4, 2026. All prior Bowman
+references in this briefing (NODE_004 entries, Zomentum tier list, Abdul/Bowman
+terminal test) should be read as El-Sayed. The Bowman attribution traced to the
+Kornacki transcript's unnamed "he" — same failure mechanism as the Jun 29
+transcript incident. Node, Background tab, and Sources all corrected in build.
+
+[2026-07-02] SUPERSEDES: This patch supersedes NODE_004 candidate claims dated
+2026-06-29 above. The Kornacki Michigan-as-test framing stands; the Bowman
+candidate attribution does not.
+
+════════════════════════════════════════════════════════════════════════════════
+END BRIEFING α0.6.2 / α0.6.3 / α0.7.0 (+ Jul 2 patches I–II)
 ════════════════════════════════════════════════════════════════════════════════
