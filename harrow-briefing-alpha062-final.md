@@ -216,5 +216,36 @@ NODE_001 RESOLUTION — July 1, 2026
 [2026-07-01] STILL OPEN: Zomentum's unfalsifiability (flagged α0.6.3, unresolved). RAMP_FLOOR=4 is a starting value, not a calibrated one — user will tune in VSCode. Wisconsin node facts still not independently re-verified.
 
 ════════════════════════════════════════════════════════════════════════════════
-END BRIEFING α0.6.2 / α0.6.3 / α0.7.0
+α0.7.0 PUBLIC DEPLOYMENT + WISCONSIN VERIFICATION — July 2, 2026
+════════════════════════════════════════════════════════════════════════════════
+
+[2026-07-02] PUBLIC BUILD LIVE — GITHUB PAGES: https://isaco35.github.io/overton/
+serves overton_070.jsx via index.html (fetch → Babel standalone → render).
+Deployed copy verified identical to local on all markers. Render pipeline
+replicated in sandbox with real React 18 — renders clean, shows the
+recalibrated +7.88/20 position (RAMP_FLOOR=4), WIP banner, Wisconsin Aug 11 as
+next node. Issue #015's broken plumbing (phantom Proper/ folder) is fully
+superseded by this hosting path.
+
+[2026-07-02] WISCONSIN NODE VERIFIED + CORRECTED: All NODE_002 claims
+independently checked via WebSearch. Confirmed: Jun 14 straw poll (Rodriguez
+27.5%, Hong 23.1%); abolition posts undeleted (CNN KFile); Piker stream Jun 29.
+Corrected in build: "Hong polling top of field" overstated — Feb Marquette Hong
+11/Barnes 10 (65% undecided); the May 26/22/15 poll was commissioned by the
+Rodriguez campaign + aligned org (now disclosed); Capital One suit not just
+"campaign says paid" — paid and DISMISSED; "PBS Wisconsin" stream detail was
+garbled — it was Piker's own stream, ~$57k raised for Hong. New field facts:
+Hughes suspended, endorsed Rodriguez; Brennan in field. Volunteer/donor counts
+labeled campaign-reported. Sources section updated; Wisconsin no longer flagged
+unverified.
+
+[2026-07-02] MINOR: index.html React CDN scripts swapped development →
+production.min. Local edits (jsx, index.html) await user push to go live.
+
+[2026-07-02] STILL OPEN: Zomentum disconfirmation condition (human call).
+RAMP_FLOOR=4 tuning (user owns). overton_dev.jsx + scratch.html delete-or-keep
+(user calls, unchanged).
+
+════════════════════════════════════════════════════════════════════════════════
+END BRIEFING α0.6.2 / α0.6.3 / α0.7.0 (+ Jul 2 deployment/verification patch)
 ════════════════════════════════════════════════════════════════════════════════

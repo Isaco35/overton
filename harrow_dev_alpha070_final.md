@@ -217,6 +217,46 @@ Standing rule going forward: don't assume Windows tooling — ask which OS befor
 writing or editing platform-specific scripts (.bat/.ps1/.sh) or invoking OS-
 specific commands. User asked for this explicitly this session.
 
+[Jul 2] VERIFICATION / GITHUB PAGES MIGRATION CONFIRMED (closes #015 chain)
+Public build now live at https://isaco35.github.io/overton/. Deployed
+overton_070.jsx verified against local copy marker-for-marker (version strings,
+RAMP_FLOOR:4, colorado resolved:"win", WIP banner, "Invented voices" relabel,
+corrected footer — all present). Chrome extension was disconnected, so instead
+of a screenshot the exact index.html pipeline (fetch → import-strip → Babel
+transform → execute → render) was replicated in the sandbox with real React 18:
+renders clean, no errors. Displayed state is the recalibrated one — position
++7.88/20, next node Wisconsin Aug 11, β threshold NODE_003. The public link
+shows the RAMP_FLOOR fix, not the old +14.00 artifact.
+
+[Jul 2] VERIFICATION / WISCONSIN NODE FACTS RE-VERIFIED (closes open issue)
+Independent WebSearch pass on every claim in the wisconsin node detail.
+CONFIRMED: straw poll Jun 14 convention — Rodriguez 27.5%, Hong 23.1% (Wisconsin
+Watch, WisPolitics); police-abolition posts 2020–21, not deleted, defended (CNN
+KFile, May 22); volunteer figure 5,548 across 62 of 72 counties + 8,000 donors
++ no corporate PAC money — these exist but are the CAMPAIGN'S OWN figures, now
+labeled as such in the node; Hasan Piker stream Jun 29 confirmed (madison.com).
+CORRECTED: (1) "Hong polling top of field" was overstated — Feb Marquette had
+Hong 11%/Barnes 10% (65% undecided, 6.3% MoE, gap "meaningless" per Franklin);
+the May poll showing Barnes 26/Hong 22/Rodriguez 15 was commissioned by the
+Rodriguez campaign + an aligned org (The Recombobulation Area disclosure), now
+disclosed in the node. (2) "Hasan streamed Hong on PBS Wisconsin" was garbled —
+Hong appeared on Piker's own stream Jun 29, raised ~$57k. (3) "Campaign says
+paid" on the Capital One $30k suit is stale — suit was DISMISSED after payment
+(WKOW). NEW FIELD FACTS: Missy Hughes suspended campaign in June, endorsed
+Rodriguez (WPR); Joel Brennan added to opponents list. Node detail and
+Methodology → Sources both updated; Wisconsin line no longer reads "not
+independently re-verified."
+
+[Jul 2] FIX / REACT PRODUCTION BUILDS
+index.html loaded react.development.js + react-dom.development.js from unpkg —
+fine for debugging, slower and console-noisy in public. Swapped both to
+production.min.js. No other changes to the shell.
+
+[Jul 2] NOTE / DEPLOYMENT LAG
+Edits this session (wisconsin node, Sources, index.html) are LOCAL ONLY until
+the user pushes to the isaco35.github.io repo. The live page still serves the
+pre-correction copies until then.
+
 ═══════════════════════════════════════════════════════════════════════════════
 OPEN ISSUES
 ═══════════════════════════════════════════════════════════════════════════════
@@ -226,9 +266,6 @@ disconfirmation condition; a UI warning isn't a fix.
 
 RAMP_FLOOR=4 is a starting value, not a calibrated one — pending user tuning in
 VSC.
-
-Wisconsin node facts (Hong campaign specifics, straw-poll numbers) not
-independently re-verified this session.
 
 overton_dev.jsx (in-app dev tab) is legacy, frozen at α0.3.0 — not maintained.
 This markdown file is the dev log now. Open question for user: delete
@@ -246,6 +283,8 @@ Load the briefing (state/memory) AND this dev log (operational history)
 separately — both required, neither substitutes for the other.
 Wait for user to state current date. Do not infer.
 Next node: Wisconsin governor primary, August 11, 2026 (NODE_002).
+Pending user action: push wisconsin-node + Sources + index.html edits to the
+GitHub Pages repo — local copies are ahead of the live site.
 Also open: August congressional primaries (NODE_003), Michigan Senate (NODE_004,
 β-phase).
 Do not pre-judge. Reality refutes or confirms.
