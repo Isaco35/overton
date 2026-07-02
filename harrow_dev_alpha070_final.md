@@ -302,6 +302,13 @@ tab Michigan section gets a FACT retraction; Zomentum tier list "Abdul/Bowman"
 transcript's referent unresolved. Kornacki's Michigan-as-test framing survives;
 the candidate attribution does not.
 
+[Jul 2] BUILD / OVERTON — α0.7.1 (version bump for Grounding Pass II)
+User rule (standing): content changes require a version bump. Corrections-only
+pass = patch bump. overton_070.jsx renamed → overton_071.jsx (git mv, history
+preserved); all internal version strings α0.7.0 → α0.7.1 (header, infobox,
+footer); footer date → July 2, 2026; fetch targets updated in index.html,
+overton_preview.html, overton_mobile.html.
+
 ═══════════════════════════════════════════════════════════════════════════════
 OPEN ISSUES
 ═══════════════════════════════════════════════════════════════════════════════
